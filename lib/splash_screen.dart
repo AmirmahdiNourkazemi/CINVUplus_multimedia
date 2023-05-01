@@ -1,10 +1,13 @@
 import 'dart:async';
 
-import 'package:connectplus/home_screen.dart';
+import 'package:connectplus/config/theme.dart';
+import 'package:connectplus/presentation/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class SplashScreen extends StatefulWidget {
+  const SplashScreen({super.key});
+
   @override
   _SplashScreenState createState() => _SplashScreenState();
 }
@@ -19,13 +22,13 @@ class _SplashScreenState extends State<SplashScreen>
     super.initState();
 
     animationController = AnimationController(
-      duration: Duration(seconds: 2),
+      duration: const Duration(seconds: 2),
       vsync: this,
     );
 
     animation = Tween<double>(begin: 0, end: 1).animate(animationController!);
 
-    Timer(Duration(seconds: 2), () {
+    Timer(const Duration(seconds: 2), () {
       Navigator.of(context).push(
         MaterialPageRoute(
           builder: ((context) {
@@ -44,7 +47,7 @@ class _SplashScreenState extends State<SplashScreen>
           fit: StackFit.expand,
           children: <Widget>[
             Container(
-              decoration: BoxDecoration(color: Color(0xffF9F9F9)),
+              decoration: const BoxDecoration(color: Color(0xffF9F9F9)),
             ),
             Column(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -56,14 +59,14 @@ class _SplashScreenState extends State<SplashScreen>
                     children: <Widget>[
                       FadeTransition(
                         opacity: animation!,
-                        child: Icon(
+                        child: const Icon(
                           Icons.lightbulb_outline,
                           color: Colors.white,
                           size: 100.0,
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.only(top: 10.0),
+                        padding: EdgeInsets.only(top: smallDistance),
                       ),
                       SvgPicture.asset(
                         'assets/images/cinvu-logo.svg',
@@ -71,9 +74,9 @@ class _SplashScreenState extends State<SplashScreen>
                         width: 200,
                       ),
                       SizedBox(
-                        height: 10,
+                        height: smallDistance,
                       ),
-                      Text(
+                      const Text(
                         'Cinvu plus',
                         style: TextStyle(
                           color: Color(0xff313F6B),
@@ -88,15 +91,15 @@ class _SplashScreenState extends State<SplashScreen>
                   flex: 1,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: const <Widget>[
-                      CircularProgressIndicator(
+                    children: <Widget>[
+                      const CircularProgressIndicator(
                         strokeWidth: 5.3,
                         backgroundColor: Color(0xff313F6B),
                       ),
                       Padding(
-                        padding: EdgeInsets.only(top: 20.0),
+                        padding: EdgeInsets.only(top: largeDistance),
                       ),
-                      Text(
+                      const Text(
                         "Loading...",
                         softWrap: true,
                         textAlign: TextAlign.center,

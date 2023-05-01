@@ -1,6 +1,8 @@
 import 'package:connectplus/splash_screen.dart';
 import 'package:flutter/material.dart';
 
+import 'config/theme.dart';
+
 void main() {
   runApp(const MainScreen());
 }
@@ -11,7 +13,13 @@ class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: SplashScreen(),
+      home: const SplashScreen(),
+      theme: ThemeData(
+          primaryTextTheme: Typography(platform: TargetPlatform.iOS).black,
+          textTheme: Typography(platform: TargetPlatform.iOS).black,
+          scaffoldBackgroundColor: backgroundColor,
+          colorScheme: colorScheme,
+          bottomNavigationBarTheme: bottomNavigationBarTheme),
     );
   }
 }
