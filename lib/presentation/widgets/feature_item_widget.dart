@@ -18,34 +18,47 @@ class FeatureItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-        onTap: _launchUrl,
+    if (feature.label == 'Meta') {
+      return GestureDetector(
+        onTap: () {
+          var snackBar = SnackBar(
+              backgroundColor: Color(0xff313F6B),
+              content: const Text(
+                'Comming soon....',
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 14,
+                  color: Colors.white,
+                ),
+              ));
+
+          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+        },
         child: Container(
-          margin: EdgeInsets.all(smallDistance),
           decoration: BoxDecoration(
             color: Colors.white,
             border: Border.all(
               width: 1,
-              color: Colors.grey.shade300,
+              color: Color(0xff313F6B),
             ),
-            borderRadius: BorderRadius.circular(largeRadius),
+            borderRadius: BorderRadius.circular(30),
             shape: BoxShape.rectangle,
           ),
           child: Stack(
             children: [
               Positioned(
-                top: 30,
-                left: 120,
+                top: 20,
+                left: 110,
                 child: SvgPicture.asset(
                   'assets/images/cinvu-logo.svg',
-                  height: 72,
-                  width: 72,
+                  height: 70,
+                  width: 70,
                 ),
               ),
-              Center(
+              const Center(
                 child: Text(
-                  feature.label,
-                  style: const TextStyle(
+                  'Meta',
+                  style: TextStyle(
                     fontSize: 30,
                     fontWeight: FontWeight.bold,
                   ),
@@ -53,6 +66,45 @@ class FeatureItemWidget extends StatelessWidget {
               ),
             ],
           ),
-        ));
+        ),
+      );
+    }
+    return GestureDetector(
+      onTap: _launchUrl,
+      child: Container(
+        margin: EdgeInsets.all(smallDistance),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          border: Border.all(
+            width: 1,
+            color: Color(0xff313F6B),
+          ),
+          borderRadius: BorderRadius.circular(largeRadius),
+          shape: BoxShape.rectangle,
+        ),
+        child: Stack(
+          children: [
+            Positioned(
+              top: 30,
+              left: 120,
+              child: SvgPicture.asset(
+                'assets/images/cinvu-logo.svg',
+                height: 65,
+                width: 65,
+              ),
+            ),
+            Center(
+              child: Text(
+                feature.label,
+                style: const TextStyle(
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

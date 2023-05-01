@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:connectplus/config/theme.dart';
 import 'package:connectplus/domain/entities/feature.dart';
+import 'package:connectplus/feature/meta_container.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -28,7 +29,9 @@ class _HomeScreenState extends State<HomeScreen> {
     Feature("Mail", "https://cinvuplus.net/"),
     Feature("Cloud", "https://cinvuplus.net/"),
     Feature("Exhibition", "https://cinvuplus.net/"),
-    Feature("Meta", "https://cinvuplus.net/")
+    Feature("Oas", "https://cinvuplus.net/"),
+    Feature("Inquiry", "https://cinvuplus.net/"),
+    Feature("Meta", "https://cinvuplus.net/"),
   ];
 
   @override
@@ -149,22 +152,26 @@ class _HomeScreenState extends State<HomeScreen> {
           title: const Text('CINVUPlus')),
       body: AnimationLimiter(
         child: GridView.count(
-            padding: EdgeInsets.all(smallDistance),
-            crossAxisCount: 2,
-            children: List.generate(
-              _featureItems.length,
-              (int index) {
-                return AnimationConfiguration.staggeredGrid(
-                  position: index,
-                  duration: const Duration(milliseconds: 350),
-                  columnCount: 2,
-                  child: ScaleAnimation(
-                      child: FadeInAnimation(
-                          child: FeatureItemWidget(
-                              feature: _featureItems[index]))),
-                );
-              },
-            )),
+          padding: EdgeInsets.all(smallDistance),
+          crossAxisCount: 2,
+          children: List.generate(
+            _featureItems.length,
+            (int index) {
+              return AnimationConfiguration.staggeredGrid(
+                position: index,
+                duration: const Duration(milliseconds: 350),
+                columnCount: 2,
+                child: ScaleAnimation(
+                  child: FadeInAnimation(
+                    child: FeatureItemWidget(
+                      feature: _featureItems[index],
+                    ),
+                  ),
+                ),
+              );
+            },
+          ),
+        ),
       ),
     );
   }
