@@ -1,12 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.connectplus">
-
+    <uses-sdk android:targetSdkVersion="22" android:minSdkVersion="17" />
     <uses-permission android:name="android.permission.INTERNET"/>
 
-    <!-- When tests are ran on Firebase Test Lab, a wake lock
-         permission failure prevents tests from running.
-    -->
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
     <!-- Provide required visibility configuration for API level 30 and above -->
     <queries>
         <!-- If your app checks for SMS support -->
