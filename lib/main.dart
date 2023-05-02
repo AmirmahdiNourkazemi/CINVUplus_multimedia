@@ -1,5 +1,6 @@
 import 'package:connectplus/splash_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import 'config/theme.dart';
 
@@ -13,6 +14,8 @@ class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      builder: FToastBuilder(),
+      //navigatorKey: navigatorKey,
       home: const SplashScreen(),
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
