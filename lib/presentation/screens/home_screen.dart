@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:connectplus/config/theme.dart';
 import 'package:connectplus/domain/entities/feature.dart';
-import 'package:connectplus/feature/meta_container.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
@@ -139,7 +138,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   crossAxisCount: 2,
                   children: List.generate(
                     _featureItems.length,
-                    (int index) {
+                        (int index) {
                       return AnimationConfiguration.staggeredGrid(
                         position: index,
                         duration: const Duration(milliseconds: 350),
@@ -152,50 +151,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     },
                   )),
             ),
-<<<<<<< HEAD
           ),
         ));
   }
 
   void _handleMenuButtonPressed() {
     _advancedDrawerController.showDrawer();
-=======
-          ],
-        ),
-      ),
-      appBar: AppBar(
-          leading: Padding(
-              padding: EdgeInsets.only(left: smallDistance),
-              child: IconButton(
-                  onPressed: () {
-                    _scaffoldKey.currentState!.openDrawer();
-                  },
-                  icon: const Icon(Icons.menu))),
-          title: const Text('CINVUPlus')),
-      body: AnimationLimiter(
-        child: GridView.count(
-          padding: EdgeInsets.all(smallDistance),
-          crossAxisCount: 2,
-          children: List.generate(
-            _featureItems.length,
-            (int index) {
-              return AnimationConfiguration.staggeredGrid(
-                position: index,
-                duration: const Duration(milliseconds: 350),
-                columnCount: 2,
-                child: ScaleAnimation(
-                  child: FadeInAnimation(
-                    child: FeatureItemWidget(
-                      feature: _featureItems[index],
-                    ),
-                  ),
-                ),
-              );
-            },
-          ),
-        ),
-      ),
-    );
->>>>>>> 7c129fcd0f87d43e30082025240e06620b97142b
   }
 }

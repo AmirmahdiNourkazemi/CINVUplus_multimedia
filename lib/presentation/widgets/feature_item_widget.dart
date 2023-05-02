@@ -21,24 +21,10 @@ class FeatureItemWidget extends StatelessWidget {
     if (feature.label == 'Meta') {
       return GestureDetector(
         onTap: () {
-<<<<<<< HEAD
           var snackBar = const SnackBar(
               backgroundColor: Color(0xff313F6B),
-              content: Text(
-                'Coming soon....',
-                style: TextStyle(
-=======
-          var snackBar = SnackBar(
-              backgroundColor: Color(0xff313F6B),
-              content: const Text(
-                'Comming soon....',
-                style: const TextStyle(
->>>>>>> 7c129fcd0f87d43e30082025240e06620b97142b
-                  fontWeight: FontWeight.bold,
-                  fontSize: 14,
-                  color: Colors.white,
-                ),
-              ));
+              content: Text('Coming soon....',
+                  style: TextStyle(backgroundColor: Color(0xff313F6B))));
 
           ScaffoldMessenger.of(context).showSnackBar(snackBar);
         },
