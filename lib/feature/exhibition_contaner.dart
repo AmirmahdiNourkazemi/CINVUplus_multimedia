@@ -22,7 +22,7 @@ class ExhibitionContainer extends StatelessWidget {
       child: Stack(
         children: [
           Positioned(
-            top: 30,
+            top: 15,
             left: 120,
             child: SvgPicture.asset(
               'assets/images/cinvu-logo.svg',
@@ -30,7 +30,7 @@ class ExhibitionContainer extends StatelessWidget {
               width: 70,
             ),
           ),
-          Center(
+          const Center(
             child: Text(
               'Exhibition',
               style: TextStyle(

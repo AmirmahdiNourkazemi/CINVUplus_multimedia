@@ -38,14 +38,14 @@ class MetaContainer extends StatelessWidget {
           children: [
             Positioned(
               top: 20,
-              left: 120,
+              left: 110,
               child: SvgPicture.asset(
                 'assets/images/cinvu-logo.svg',
                 height: 70,
                 width: 70,
               ),
             ),
-            Center(
+          const  Center(
               child: Text(
                 'Meta',
                 style: TextStyle(

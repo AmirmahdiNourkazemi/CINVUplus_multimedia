@@ -23,7 +23,7 @@ class ErpContainer extends StatelessWidget {
         children: [
           Positioned(
             top: 30,
-            left: 120,
+            left: 110,
             child: SvgPicture.asset(
               'assets/images/cinvu-logo.svg',
               height: 70,
