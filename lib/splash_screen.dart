@@ -52,8 +52,8 @@ class _SplashScreenState extends State<SplashScreen>
             fit: StackFit.expand,
             children: <Widget>[
               Container(
-                decoration: const BoxDecoration(
-                  color: Color(0xffF9F9F9),
+                decoration: BoxDecoration(
+                  color: backgroundColor,
                 ),
               ),
               Column(

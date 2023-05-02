@@ -20,18 +20,19 @@ class _HomeScreenState extends State<HomeScreen> {
   final _advancedDrawerController = AdvancedDrawerController();
 
   final _featureItems = [
-    Feature("ERP", "https://cinvuplus.net/"),
-    Feature("Contact", "https://cinvuplus.net/"),
-    Feature("Market", "https://cinvuplus.net/"),
-    Feature("Calling", "https://cinvuplus.net/"),
-    Feature("Tube", "https://cinvuplus.net/"),
-    Feature("Event", "https://cinvuplus.net/"),
-    Feature("Mail", "https://cinvuplus.net/"),
-    Feature("Cloud", "https://cinvuplus.net/"),
-    Feature("Exhibition", "https://cinvuplus.net/"),
-    Feature("Oas", "https://cinvuplus.net/"),
-    Feature("Inquiry", "https://cinvuplus.net/"),
-    Feature("Meta", "https://cinvuplus.net/"),
+    Feature("Connect", siteUrl: "https://cinvuplus.net/i/web"),
+    Feature("Oas", siteUrl: "https://office.cinvu.net/"),
+    Feature("Cloud", siteUrl: "https://cloud.cinvu.net/"),
+    Feature("Mail", isEnable: false),
+    Feature("Erp", siteUrl: "https://fa.conexusportal.com/"),
+    Feature("Calling", isEnable: false),
+    Feature("Lms", isEnable: false),
+    Feature("Events", isEnable: false),
+    Feature("Market", isEnable: false),
+    Feature("Exhibition", isEnable: false),
+    Feature("Tube", siteUrl: "https://connecttube.ir/"),
+    Feature("Inquiry", isEnable: false),
+    Feature("Metaverse", isEnable: false),
   ];
 
   @override
@@ -138,7 +139,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   crossAxisCount: 2,
                   children: List.generate(
                     _featureItems.length,
-                        (int index) {
+                    (int index) {
                       return AnimationConfiguration.staggeredGrid(
                         position: index,
                         duration: const Duration(milliseconds: 350),
