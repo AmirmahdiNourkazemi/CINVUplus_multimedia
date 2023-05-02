@@ -14,6 +14,7 @@ class MainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: const SplashScreen(),
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
           primaryTextTheme: Typography(platform: TargetPlatform.iOS).black,
           textTheme: Typography(platform: TargetPlatform.iOS).black,
