@@ -20,15 +20,15 @@ class _HomeScreenState extends State<HomeScreen> {
   final _advancedDrawerController = AdvancedDrawerController();
 
   final _featureItems = [
-    Feature("Connect", siteUrl: "https://cinvuplus.net/i/web"),
+    Feature("Connect", siteUrl: "https://cinvuplus.net/"),
     Feature("Oas", siteUrl: "https://office.cinvu.net/"),
     Feature("Cloud", siteUrl: "https://cloud.cinvu.net/"),
     Feature("Tube", siteUrl: "https://connecttube.ir/"),
-    Feature("Erp", siteUrl: "https://fa.conexusportal.com/"),
+    Feature("ERP", siteUrl: "https://fa.conexusportal.com/"),
+    Feature("Events", siteUrl: "https://connectteam.ir/Cinvuevent1"),
     Feature("Mail", isEnable: false),
     Feature("Calling", isEnable: false),
     Feature("Lms", isEnable: false),
-    Feature("Events", isEnable: false),
     Feature("Market", isEnable: false),
     Feature("Exhibition", isEnable: false),
     Feature("Inquiry", isEnable: false),
@@ -71,70 +71,75 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           drawer: SafeArea(
             child: ListTileTheme(
-                textColor: Colors.white,
-                iconColor: Colors.white,
-                child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: smallDistance),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Container(
-                        width: 128.0,
-                        height: 128.0,
-                        margin: const EdgeInsets.only(
-                          top: 24.0,
-                          bottom: 64.0,
-                        ),
-                        child: SvgPicture.asset(
-                          'assets/images/cinvu-logo.svg',
-                        ),
+              textColor: Colors.white,
+              iconColor: Colors.white,
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: smallDistance),
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Container(
+                      width: 128.0,
+                      height: 128.0,
+                      margin: const EdgeInsets.only(
+                        top: 24.0,
+                        bottom: 64.0,
                       ),
-                      SizedBox(height: smallDistance),
-                      Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(smallDistance),
-                          color: primaryColor.withOpacity(0.2),
-                        ),
-                        child: ListTile(
-                          onTap: () {},
-                          leading: Icon(Icons.roundabout_right_rounded,
-                              color: primaryColor),
-                          title: Text('About us',
-                              style: TextStyle(color: primaryColor)),
-                        ),
+                      child: SvgPicture.asset(
+                        'assets/images/cinvu-logo.svg',
                       ),
-                      ListTile(
+                    ),
+                    SizedBox(height: smallDistance),
+                    Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(smallDistance),
+                        color: primaryColor.withOpacity(0.2),
+                      ),
+                      child: ListTile(
                         onTap: () {},
-                        leading: const Icon(Icons.contact_support_outlined),
-                        title: const Text('Contact us'),
+                        leading: Icon(Icons.roundabout_right_rounded,
+                            color: primaryColor),
+                        title: Text('About us',
+                            style: TextStyle(color: primaryColor)),
                       ),
-                      const Spacer(),
-                      Container(
-                        margin: const EdgeInsets.symmetric(
-                          vertical: 16.0,
-                        ),
-                        child: ListTile(
-                          onTap: () {
-                            exit(0);
-                          },
-                          leading: const Icon(Icons.exit_to_app),
-                          title: const Text('Exit'),
-                        ),
+                    ),
+                    ListTile(
+                      onTap: () {},
+                      leading: const Icon(Icons.contact_support_outlined),
+                      title: const Text('Contact us'),
+                    ),
+                    const Spacer(),
+                    Container(
+                      margin: const EdgeInsets.symmetric(
+                        vertical: 16.0,
                       ),
-                    ],
-                  ),
-                )),
+                      child: ListTile(
+                        onTap: () {
+                          exit(0);
+                        },
+                        leading: const Icon(Icons.exit_to_app),
+                        title: const Text('Exit'),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
           ),
           child: Scaffold(
             appBar: AppBar(
-                leading: Padding(
-                    padding: EdgeInsets.only(left: smallDistance),
-                    child: IconButton(
-                        onPressed: _handleMenuButtonPressed,
-                        icon: const Icon(Icons.menu))),
-                title: const Text('CINVUPlus')),
+              leading: Padding(
+                padding: EdgeInsets.only(left: smallDistance),
+                child: IconButton(
+                  onPressed: _handleMenuButtonPressed,
+                  icon: const Icon(Icons.menu),
+                ),
+              ),
+              title: const Text('CINVUPlus'),
+            ),
             body: AnimationLimiter(
               child: GridView.count(
+                  childAspectRatio: 1.4,
                   padding: EdgeInsets.all(smallDistance),
                   crossAxisCount: 2,
                   children: List.generate(
@@ -145,9 +150,12 @@ class _HomeScreenState extends State<HomeScreen> {
                         duration: const Duration(milliseconds: 350),
                         columnCount: 2,
                         child: ScaleAnimation(
-                            child: FadeInAnimation(
-                                child: FeatureItemWidget(
-                                    feature: _featureItems[index]))),
+                          child: FadeInAnimation(
+                            child: FeatureItemWidget(
+                              feature: _featureItems[index],
+                            ),
+                          ),
+                        ),
                       );
                     },
                   )),

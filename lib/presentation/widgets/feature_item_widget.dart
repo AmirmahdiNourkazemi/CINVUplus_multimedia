@@ -35,32 +35,35 @@ class FeatureItemWidget extends StatelessWidget {
           borderRadius: BorderRadius.circular(largeRadius),
           shape: BoxShape.rectangle,
         ),
-        child: Stack(
-          children: [
-            Positioned(
-              top: 32,
-              left: 120,
-              child: Opacity(
+        child: Center(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(
+                child: Opacity(
                   opacity: (feature.isEnable) ? 1 : 0.3,
                   child: SvgPicture.asset(
                     'assets/images/cinvu-logo.svg',
-                    height: 64,
-                    width: 64,
-                  )),
-            ),
-            Center(
-              child: Text(
-                feature.label,
-                style: TextStyle(
-                  fontSize: 30,
-                  color: (feature.isEnable)
-                      ? Colors.black
-                      : Colors.black.withOpacity(0.3),
-                  fontWeight: FontWeight.bold,
+                    height: 54,
+                    width: 54,
+                  ),
                 ),
               ),
-            ),
-          ],
+              Center(
+                child: Text(
+                  feature.label,
+                  style: TextStyle(
+                    fontSize: 30,
+                    color: (feature.isEnable)
+                        ? Colors.black
+                        : Colors.black.withOpacity(0.3),
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
