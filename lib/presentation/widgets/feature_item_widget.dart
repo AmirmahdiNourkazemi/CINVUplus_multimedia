@@ -17,7 +17,8 @@ class FeatureItemWidget extends StatelessWidget {
           Navigator.of(context).push(
             MaterialPageRoute(
               builder: ((context) {
-                return WebViewScreen(url: feature.siteUrl!);
+                return WebViewScreen(
+                    url: feature.siteUrl!, label: feature.label);
               }),
             ),
           );
