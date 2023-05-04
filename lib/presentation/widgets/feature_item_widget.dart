@@ -2,6 +2,7 @@ import 'package:connectplus/config/theme.dart';
 import 'package:connectplus/domain/entities/feature.dart';
 import 'package:connectplus/presentation/screens/web_view_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class FeatureItemWidget extends StatelessWidget {
@@ -27,8 +28,9 @@ class FeatureItemWidget extends StatelessWidget {
       child: Container(
         margin: EdgeInsets.all(smallDistance),
         decoration: BoxDecoration(
-          color:
-              (feature.isEnable) ? Colors.white : Colors.grey.withOpacity(0.3),
+          color: (feature.isEnable)
+              ? feature.backGroundColor?.withOpacity(0.4)
+              : Colors.grey.withOpacity(0.3),
           border: Border.all(
             width: 1,
             color: (feature.isEnable) ? primaryColor : Colors.grey.shade300,
@@ -42,15 +44,14 @@ class FeatureItemWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SizedBox(
-                child: Opacity(
-                  opacity: (feature.isEnable) ? 1 : 0.3,
-                  child: SvgPicture.asset(
-                    'assets/images/cinvu-logo.svg',
-                    height: 54,
-                    width: 54,
-                  ),
+                  child: Opacity(
+                opacity: (feature.isEnable) ? 1 : 0.3,
+                child: SvgPicture.asset(
+                  'assets/images/cinvu-logo.svg',
+                  height: 54,
+                  width: 54,
                 ),
-              ),
+              )),
               Center(
                 child: Text(
                   feature.label,
@@ -61,7 +62,11 @@ class FeatureItemWidget extends StatelessWidget {
                         : Colors.black.withOpacity(0.3),
                     fontWeight: FontWeight.bold,
                   ),
-                ),
+                )
+                    .animate()
+                    .move(delay: 300.ms, duration: 600.ms)
+                    .move(duration: 400.ms)
+                    .scale(),
               ),
             ],
           ),
