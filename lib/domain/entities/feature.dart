@@ -4,8 +4,8 @@ class Feature {
   String label;
   String? siteUrl;
   bool isEnable = true;
-  Color? backGroundColor;
+  Color? iconColor;
 
   Feature(this.label,
-      {this.siteUrl, this.isEnable = true, this.backGroundColor});
+      {this.siteUrl, this.isEnable = true, this.iconColor});
 }

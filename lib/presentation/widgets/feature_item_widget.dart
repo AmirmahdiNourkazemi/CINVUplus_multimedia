@@ -1,5 +1,6 @@
 import 'package:connectplus/config/theme.dart';
 import 'package:connectplus/domain/entities/feature.dart';
+import 'package:connectplus/presentation/screens/event_form_screen.dart';
 import 'package:connectplus/presentation/screens/web_view_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -18,8 +19,12 @@ class FeatureItemWidget extends StatelessWidget {
           Navigator.of(context).push(
             MaterialPageRoute(
               builder: ((context) {
-                return WebViewScreen(
-                    url: feature.siteUrl!, label: feature.label);
+                if (feature.label == "Events") {
+                  return const EventFormScreen();
+                } else {
+                  return WebViewScreen(
+                      url: feature.siteUrl!, label: feature.label);
+                }
               }),
             ),
           );
@@ -28,9 +33,8 @@ class FeatureItemWidget extends StatelessWidget {
       child: Container(
         margin: EdgeInsets.all(smallDistance),
         decoration: BoxDecoration(
-          color: (feature.isEnable)
-              ? feature.backGroundColor?.withOpacity(0.4)
-              : Colors.grey.withOpacity(0.3),
+          color:
+          (feature.isEnable) ? Colors.white : Colors.grey.withOpacity(0.3),
           border: Border.all(
             width: 1,
             color: (feature.isEnable) ? primaryColor : Colors.grey.shade300,
@@ -45,13 +49,14 @@ class FeatureItemWidget extends StatelessWidget {
             children: [
               SizedBox(
                   child: Opacity(
-                opacity: (feature.isEnable) ? 1 : 0.3,
-                child: SvgPicture.asset(
-                  'assets/images/cinvu-logo.svg',
-                  height: 54,
-                  width: 54,
-                ),
-              )),
+                    opacity: (feature.isEnable) ? 1 : 0.5,
+                    child: SvgPicture.asset(
+                      color: feature.iconColor,
+                      'assets/images/cinvu-logo.svg',
+                      height: 54,
+                      width: 54,
+                    ),
+                  )),
               Center(
                 child: Text(
                   feature.label,
