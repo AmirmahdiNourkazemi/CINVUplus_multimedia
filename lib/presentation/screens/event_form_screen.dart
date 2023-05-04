@@ -45,215 +45,199 @@ class _EventFormScreenState extends State<EventFormScreen> {
         child: SafeArea(
             child: Padding(
                 padding: EdgeInsets.all(mediumDistance),
-                child: Expanded(
-                  flex: 1,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        'Event details',
-                        style: TextStyle(fontSize: 20, fontWeight: bold),
-                      ),
-                      SizedBox(
-                        height: largeDistance,
-                      ),
-                      Form(
-                          key: _codeKey,
-                          child: TextFormField(
-                            maxLength: 19,
-                            maxLines: 1,
-                            controller: codeController,
-                            validator: validateCode,
-                            keyboardType: TextInputType.number,
-                            decoration: InputDecoration(
-                              counterText: "",
-                              labelText: 'Code',
-                              labelStyle: const TextStyle(
-                                color: Colors.grey,
-                              ),
-                              enabledBorder: OutlineInputBorder(
-                                borderSide:
-                                    const BorderSide(color: Colors.grey),
-                                borderRadius:
-                                    BorderRadius.circular(smallRadius),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius:
-                                    BorderRadius.circular(smallRadius),
-                              ),
-                              errorBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(color: Colors.red),
-                                borderRadius:
-                                    BorderRadius.circular(smallDistance),
-                              ),
-                              focusedErrorBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(color: Colors.red),
-                                borderRadius:
-                                    BorderRadius.circular(smallDistance),
-                              ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Event details',
+                      style: TextStyle(fontSize: 20, fontWeight: bold),
+                    ),
+                    SizedBox(
+                      height: largeDistance,
+                    ),
+                    Form(
+                        key: _codeKey,
+                        child: TextFormField(
+                          maxLength: 19,
+                          maxLines: 1,
+                          controller: codeController,
+                          validator: validateCode,
+                          keyboardType: TextInputType.number,
+                          decoration: InputDecoration(
+                            counterText: "",
+                            labelText: 'Code',
+                            labelStyle: const TextStyle(
+                              color: Colors.grey,
                             ),
-                          )),
-                      SizedBox(
-                        height: mediumDistance,
-                      ),
-                      Form(
-                          key: _fnameKey,
-                          child: TextFormField(
-                            maxLength: 20,
-                            controller: fnameController,
-                            maxLines: 1,
-                            keyboardType: TextInputType.name,
-                            validator: validateFirstName,
-                            decoration: InputDecoration(
-                              counterText: "",
-                              labelText: 'First name',
-                              labelStyle: const TextStyle(
-                                color: Colors.grey,
-                              ),
-                              enabledBorder: OutlineInputBorder(
-                                borderSide:
-                                    const BorderSide(color: Colors.grey),
-                                borderRadius:
-                                    BorderRadius.circular(smallRadius),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius:
-                                    BorderRadius.circular(smallRadius),
-                              ),
-                              errorBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(color: Colors.red),
-                                borderRadius:
-                                    BorderRadius.circular(smallDistance),
-                              ),
-                              focusedErrorBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(color: Colors.red),
-                                borderRadius:
-                                    BorderRadius.circular(smallDistance),
-                              ),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(color: Colors.grey),
+                              borderRadius: BorderRadius.circular(smallRadius),
                             ),
-                          )),
-                      SizedBox(
-                        height: mediumDistance,
-                      ),
-                      Form(
-                          key: _lnameKey,
-                          child: TextFormField(
-                            maxLength: 20,
-                            keyboardType: TextInputType.name,
-                            maxLines: 1,
-                            controller: lnameController,
-                            validator: validateLastName,
-                            decoration: InputDecoration(
-                              counterText: "",
-                              labelText: 'Last name',
-                              labelStyle: const TextStyle(
-                                color: Colors.grey,
-                              ),
-                              enabledBorder: OutlineInputBorder(
-                                borderSide:
-                                    const BorderSide(color: Colors.grey),
-                                borderRadius:
-                                    BorderRadius.circular(smallRadius),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius:
-                                    BorderRadius.circular(smallRadius),
-                              ),
-                              errorBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(color: Colors.red),
-                                borderRadius:
-                                    BorderRadius.circular(smallDistance),
-                              ),
-                              focusedErrorBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(color: Colors.red),
-                                borderRadius:
-                                    BorderRadius.circular(smallDistance),
-                              ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(smallRadius),
                             ),
-                          )),
-                      SizedBox(
-                        height: mediumDistance,
-                      ),
-                      Form(
-                          key: _mobileKey,
-                          child: TextFormField(
-                            maxLength: 11,
-                            maxLines: 1,
-                            controller: mobileController,
-                            keyboardType: TextInputType.phone,
-                            validator: validateMobile,
-                            decoration: InputDecoration(
-                              counterText: "",
-                              labelText: 'Mobile',
-                              labelStyle: const TextStyle(
-                                color: Colors.grey,
-                              ),
-                              enabledBorder: OutlineInputBorder(
-                                borderSide:
-                                    const BorderSide(color: Colors.grey),
-                                borderRadius:
-                                    BorderRadius.circular(smallRadius),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius:
-                                    BorderRadius.circular(smallRadius),
-                              ),
-                              errorBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(color: Colors.red),
-                                borderRadius:
-                                    BorderRadius.circular(smallDistance),
-                              ),
-                              focusedErrorBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(color: Colors.red),
-                                borderRadius:
-                                    BorderRadius.circular(smallDistance),
-                              ),
+                            errorBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(color: Colors.red),
+                              borderRadius:
+                                  BorderRadius.circular(smallDistance),
                             ),
-                          )),
-                      SizedBox(
-                        height: mediumDistance,
-                      ),
-                      Form(
-                          key: _emailKey,
-                          child: TextFormField(
-                            maxLength: 100,
-                            keyboardType: TextInputType.emailAddress,
-                            maxLines: 1,
-                            controller: emailController,
-                            validator: validateEmail,
-                            decoration: InputDecoration(
-                              counterText: "",
-                              labelText: 'Email',
-                              labelStyle: const TextStyle(
-                                color: Colors.grey,
-                              ),
-                              enabledBorder: OutlineInputBorder(
-                                borderSide:
-                                    const BorderSide(color: Colors.grey),
-                                borderRadius:
-                                    BorderRadius.circular(smallRadius),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius:
-                                    BorderRadius.circular(smallRadius),
-                              ),
-                              errorBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(color: Colors.red),
-                                borderRadius:
-                                    BorderRadius.circular(smallDistance),
-                              ),
-                              focusedErrorBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(color: Colors.red),
-                                borderRadius:
-                                    BorderRadius.circular(smallDistance),
-                              ),
+                            focusedErrorBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(color: Colors.red),
+                              borderRadius:
+                                  BorderRadius.circular(smallDistance),
                             ),
-                          )),
-                      SizedBox(
-                        height: xLargeDistance,
-                      ),
-                      ElevatedButton(
+                          ),
+                        )),
+                    SizedBox(
+                      height: mediumDistance,
+                    ),
+                    Form(
+                        key: _fnameKey,
+                        child: TextFormField(
+                          maxLength: 20,
+                          controller: fnameController,
+                          maxLines: 1,
+                          keyboardType: TextInputType.name,
+                          validator: validateFirstName,
+                          decoration: InputDecoration(
+                            counterText: "",
+                            labelText: 'First name',
+                            labelStyle: const TextStyle(
+                              color: Colors.grey,
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(color: Colors.grey),
+                              borderRadius: BorderRadius.circular(smallRadius),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(smallRadius),
+                            ),
+                            errorBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(color: Colors.red),
+                              borderRadius:
+                                  BorderRadius.circular(smallDistance),
+                            ),
+                            focusedErrorBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(color: Colors.red),
+                              borderRadius:
+                                  BorderRadius.circular(smallDistance),
+                            ),
+                          ),
+                        )),
+                    SizedBox(
+                      height: mediumDistance,
+                    ),
+                    Form(
+                        key: _lnameKey,
+                        child: TextFormField(
+                          maxLength: 20,
+                          keyboardType: TextInputType.name,
+                          maxLines: 1,
+                          controller: lnameController,
+                          validator: validateLastName,
+                          decoration: InputDecoration(
+                            counterText: "",
+                            labelText: 'Last name',
+                            labelStyle: const TextStyle(
+                              color: Colors.grey,
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(color: Colors.grey),
+                              borderRadius: BorderRadius.circular(smallRadius),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(smallRadius),
+                            ),
+                            errorBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(color: Colors.red),
+                              borderRadius:
+                                  BorderRadius.circular(smallDistance),
+                            ),
+                            focusedErrorBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(color: Colors.red),
+                              borderRadius:
+                                  BorderRadius.circular(smallDistance),
+                            ),
+                          ),
+                        )),
+                    SizedBox(
+                      height: mediumDistance,
+                    ),
+                    Form(
+                        key: _mobileKey,
+                        child: TextFormField(
+                          maxLength: 11,
+                          maxLines: 1,
+                          controller: mobileController,
+                          keyboardType: TextInputType.phone,
+                          validator: validateMobile,
+                          decoration: InputDecoration(
+                            counterText: "",
+                            labelText: 'Mobile',
+                            labelStyle: const TextStyle(
+                              color: Colors.grey,
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(color: Colors.grey),
+                              borderRadius: BorderRadius.circular(smallRadius),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(smallRadius),
+                            ),
+                            errorBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(color: Colors.red),
+                              borderRadius:
+                                  BorderRadius.circular(smallDistance),
+                            ),
+                            focusedErrorBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(color: Colors.red),
+                              borderRadius:
+                                  BorderRadius.circular(smallDistance),
+                            ),
+                          ),
+                        )),
+                    SizedBox(
+                      height: mediumDistance,
+                    ),
+                    Form(
+                        key: _emailKey,
+                        child: TextFormField(
+                          maxLength: 100,
+                          keyboardType: TextInputType.emailAddress,
+                          maxLines: 1,
+                          controller: emailController,
+                          validator: validateEmail,
+                          decoration: InputDecoration(
+                            counterText: "",
+                            labelText: 'Email',
+                            labelStyle: const TextStyle(
+                              color: Colors.grey,
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(color: Colors.grey),
+                              borderRadius: BorderRadius.circular(smallRadius),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(smallRadius),
+                            ),
+                            errorBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(color: Colors.red),
+                              borderRadius:
+                                  BorderRadius.circular(smallDistance),
+                            ),
+                            focusedErrorBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(color: Colors.red),
+                              borderRadius:
+                                  BorderRadius.circular(smallDistance),
+                            ),
+                          ),
+                        )),
+                    SizedBox(
+                      height: xLargeDistance,
+                    ),
+                    Center(
+                      child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
                           minimumSize: const Size(370, 64),
                           shape: RoundedRectangleBorder(
@@ -286,9 +270,9 @@ class _EventFormScreenState extends State<EventFormScreen> {
                           ),
                         ),
                       ),
-                      SizedBox(height: largeDistance),
-                    ],
-                  ),
+                    ),
+                    SizedBox(height: largeDistance),
+                  ],
                 ))),
       ),
     );

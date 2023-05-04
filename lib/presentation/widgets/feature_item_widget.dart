@@ -34,7 +34,7 @@ class FeatureItemWidget extends StatelessWidget {
         margin: EdgeInsets.all(smallDistance),
         decoration: BoxDecoration(
           color:
-          (feature.isEnable) ? Colors.white : Colors.grey.withOpacity(0.3),
+              (feature.isEnable) ? Colors.white : Colors.grey.withOpacity(0.3),
           border: Border.all(
             width: 1,
             color: (feature.isEnable) ? primaryColor : Colors.grey.shade300,
@@ -49,21 +49,21 @@ class FeatureItemWidget extends StatelessWidget {
             children: [
               SizedBox(
                   child: Opacity(
-                    opacity: (feature.isEnable) ? 1 : 0.5,
-                    child: SvgPicture.asset(
-                      color: feature.iconColor,
-                      'assets/images/cinvu-logo.svg',
-                      height: 54,
-                      width: 54,
-                    ),
-                  )),
+                opacity: (feature.isEnable) ? 1 : 0.5,
+                child: SvgPicture.asset(
+                  color: feature.iconColor,
+                  'assets/images/cinvu-logo.svg',
+                  height: 54,
+                  width: 54,
+                ),
+              )),
               Center(
                 child: Text(
                   feature.label,
                   style: TextStyle(
                     fontSize: 30,
                     color: (feature.isEnable)
-                        ? Colors.black
+                        ? feature.iconColor
                         : Colors.black.withOpacity(0.3),
                     fontWeight: FontWeight.bold,
                   ),
