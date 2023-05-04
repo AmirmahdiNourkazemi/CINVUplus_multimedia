@@ -83,13 +83,28 @@ class _SplashScreenState extends State<SplashScreen>
                         SizedBox(
                           height: smallDistance,
                         ),
-                        const Text(
-                          'Cinvu plus',
-                          style: TextStyle(
-                            color: Color(0xff313F6B),
-                            fontWeight: FontWeight.bold,
-                            fontSize: 35,
-                          ),
+                        Column(
+                          children: const [
+                            Text(
+                              'CINVU Plus',
+                              style: TextStyle(
+                                color: Color(0xff313F6B),
+                                fontWeight: FontWeight.bold,
+                                fontSize: 35,
+                              ),
+                            ),
+                            SizedBox(
+                              height: 4,
+                            ),
+                            Text(
+                              'www.cinvu.net',
+                              style: TextStyle(
+                                color: Color(0xff313F6B),
+                                fontWeight: FontWeight.bold,
+                                fontSize: 15,
+                              ),
+                            ),
+                          ],
                         )
                       ],
                     ),
