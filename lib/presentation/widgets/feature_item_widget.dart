@@ -3,8 +3,6 @@ import 'package:connectplus/domain/entities/feature.dart';
 import 'package:connectplus/presentation/screens/event_form_screen.dart';
 import 'package:connectplus/presentation/screens/web_view_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class FeatureItemWidget extends StatelessWidget {
   final Feature feature;
@@ -48,8 +46,6 @@ class FeatureItemWidget extends StatelessWidget {
             ),
           );
 
-          // Find the ScaffoldMessenger in the widget tree
-          // and use it to show a SnackBar.
           ScaffoldMessenger.of(context).showSnackBar(snackBar);
         }
       },
@@ -61,7 +57,7 @@ class FeatureItemWidget extends StatelessWidget {
               color: Colors.grey.withOpacity(0.1),
               spreadRadius: 4,
               blurRadius: 2,
-              offset: Offset(2, 2), // changes position of shadow
+              offset: const Offset(2, 2), // changes position of shadow
             ),
           ],
           gradient: (feature.isEnable)
@@ -93,14 +89,14 @@ class FeatureItemWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.end,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(
+              Container(
+                margin: EdgeInsets.only(right: smallDistance),
                 child: Opacity(
                   opacity: (feature.isEnable) ? 1 : 0.5,
-                  child: SvgPicture.asset(
+                  child: Icon(
+                    feature.icon,
                     color: feature.iconColor?.withOpacity(0.5),
-                    'assets/images/cinvu-logo.svg',
-                    height: 40,
-                    width: 40,
+                    size: 32,
                   ),
                 ),
               ),
@@ -115,32 +111,26 @@ class FeatureItemWidget extends StatelessWidget {
                                 feature.iconColor!.withOpacity(0.9),
                                 feature.iconColor!.withOpacity(0.8),
                                 feature.iconColor!.withOpacity(0.3),
-                                //add more color here.
                               ],
                               begin: Alignment.topCenter,
                               end: Alignment.bottomRight,
                             ).createShader(
-                              Rect.fromLTWH(100.0, 0.0, 100.0, 100.0))
+                              const Rect.fromLTWH(100.0, 0.0, 100.0, 100.0))
                           : LinearGradient(
                               colors: <Color>[
                                 Colors.black.withOpacity(0.3),
                                 Colors.black.withOpacity(0.3),
                                 Colors.black.withOpacity(0.3)
-                                //add more color here.
                               ],
                             ).createShader(
-                              Rect.fromLTWH(0.0, 0.0, 200.0, 100.0)),
+                              const Rect.fromLTWH(0.0, 0.0, 200.0, 100.0)),
                     fontSize: 30,
                     // color: (feature.isEnable)
                     //     ? feature.iconColor
                     //     : Colors.black.withOpacity(0.3),
                     fontWeight: FontWeight.bold,
                   ),
-                )
-                    .animate()
-                    .move(delay: 300.ms, duration: 600.ms)
-                    .move(duration: 400.ms)
-                    .scale(),
+                ),
               ),
             ],
           ),

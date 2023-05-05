@@ -16,48 +16,84 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenState extends State<HomeScreen> with RouteAware {
   final _advancedDrawerController = AdvancedDrawerController();
 
   final _featureItems = [
     Feature(
-      "Connect",
-      siteUrl: "https://cinvuplus.net/",
-      iconColor: Color.fromARGB(255, 3, 151, 165),
-    ),
+        label: "Connect",
+        siteUrl: "https://cinvuplus.net/",
+        iconColor: const Color.fromARGB(255, 3, 151, 165),
+        icon: Icons.contact_page),
     Feature(
-      "OAS",
-      siteUrl: "https://office.cinvu.net/",
-      iconColor: Color.fromARGB(255, 4, 46, 153),
-    ),
+        label: "OAS",
+        siteUrl: "https://office.cinvu.net/",
+        iconColor: const Color.fromARGB(255, 4, 46, 153),
+        icon: Icons.supervised_user_circle),
     Feature(
-      "Cloud",
+      label: "Cloud",
       siteUrl: "https://cloud.cinvu.net/",
       iconColor: const Color(0xff39a3fa),
+      icon: Icons.cloud_download_outlined,
     ),
     Feature(
-      "Tube",
+      label: "Tube",
       siteUrl: "https://connecttube.ir/",
       iconColor: const Color.fromARGB(255, 185, 60, 2),
+      icon: Icons.video_camera_front_rounded,
     ),
     Feature(
-      "ERP",
+      label: "ERP",
       siteUrl: "https://fa.conexusportal.com/",
       iconColor: const Color.fromARGB(255, 65, 5, 144),
+      icon: Icons.play_lesson_outlined,
     ),
     Feature(
-      "Events",
+      label: "Events",
       siteUrl: "https://connectteam.ir/Cinvuevent1",
       iconColor: const Color.fromARGB(255, 3, 150, 37),
+      icon: Icons.event_available,
     ),
-    Feature("Mail", isEnable: false),
-    Feature("Calling", isEnable: false),
-    Feature("T&Lms", isEnable: false),
-    Feature("Market", isEnable: false),
-    Feature("Exhibition", isEnable: false),
-    Feature("Inquiry", isEnable: false),
-    Feature("VoIP", isEnable: false),
-    Feature("Metaverse", isEnable: false),
+    Feature(
+      label: "Mail",
+      isEnable: false,
+      icon: Icons.mail,
+    ),
+    Feature(
+      label: "Calling",
+      isEnable: false,
+      icon: Icons.call,
+    ),
+    Feature(
+      label: "T&Lms",
+      isEnable: false,
+      icon: Icons.laptop_mac_sharp,
+    ),
+    Feature(
+      label: "Market",
+      isEnable: false,
+      icon: Icons.shop,
+    ),
+    Feature(
+      label: "Exhibition",
+      isEnable: false,
+      icon: Icons.add_home_work,
+    ),
+    Feature(
+      label: "Inquiry",
+      isEnable: false,
+      icon: Icons.get_app_outlined,
+    ),
+    Feature(
+      label: "VoIP",
+      isEnable: false,
+      icon: Icons.speaker_group,
+    ),
+    Feature(
+      label: "Metaverse",
+      isEnable: false,
+      icon: Icons.airplay_sharp,
+    ),
   ];
 
   @override

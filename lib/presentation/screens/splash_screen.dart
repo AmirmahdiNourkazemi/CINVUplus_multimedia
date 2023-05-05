@@ -5,6 +5,8 @@ import 'package:connectplus/presentation/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../utils/utils.dart';
+
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
@@ -13,30 +15,56 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen>
-    with SingleTickerProviderStateMixin {
+    with SingleTickerProviderStateMixin, RouteAware {
   AnimationController? animationController;
   Animation<double>? animation;
 
   @override
-  void initState() {
-    super.initState();
+  void didPush() {
+    print('HomePage: Called didPush');
+    super.didPush();
+  }
 
+  @override
+  void didPop() {
+    print('HomePage: Called didPop');
+    super.didPop();
+  }
+
+  @override
+  void didPopNext() {
+    print('HomePage: Called didPopNext');
+    super.didPopNext();
+  }
+
+  @override
+  void didPushNext() {
+    print('HomePage: Called didPushNext');
+    super.didPushNext();
+  }
+
+  @override
+  void initState() {
     animationController = AnimationController(
       duration: const Duration(seconds: 2),
       vsync: this,
     );
 
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      routeObserver.subscribe(this, ModalRoute.of(context)!);
+    });
+
     animation = Tween<double>(begin: 0, end: 1).animate(animationController!);
 
     Timer(const Duration(seconds: 2), () {
-      Navigator.of(context).pushReplacement(
+      Navigator.of(context).push(
         MaterialPageRoute(
-          builder: ((context) {
-            return const HomeScreen();
-          }),
+          builder: (context) => const HomeScreen(),
         ),
       );
     });
+
+    super.initState();
   }
 
   @override

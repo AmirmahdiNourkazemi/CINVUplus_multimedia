@@ -1,5 +1,6 @@
 import 'dart:collection';
 
+import 'package:connectplus/config/theme.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
@@ -17,6 +18,14 @@ class WebViewScreen extends StatefulWidget {
 }
 
 class _WebViewScreenState extends State<WebViewScreen> {
+
+
+  InAppWebViewSettings settings = InAppWebViewSettings(
+      mediaPlaybackRequiresUserGesture: true,
+      allowsInlineMediaPlayback: true,
+      iframeAllow: "camera; microphone",
+      iframeAllowFullscreen: true);
+
   final GlobalKey webViewKey = GlobalKey();
 
   InAppWebViewController? webViewController;
@@ -36,6 +45,9 @@ class _WebViewScreenState extends State<WebViewScreen> {
                 .contains(defaultTargetPlatform)
         ? null
         : PullToRefreshController(
+            settings: PullToRefreshSettings(
+              color: primaryColor,
+            ),
             onRefresh: () async {
               if (defaultTargetPlatform == TargetPlatform.android) {
                 webViewController?.reload();
@@ -92,10 +104,16 @@ class _WebViewScreenState extends State<WebViewScreen> {
                   InAppWebView(
                     key: webViewKey,
                     pullToRefreshController: pullToRefreshController,
-                    initialUrlRequest: URLRequest(url: Uri.parse(widget.url)),
+                    initialUrlRequest: URLRequest(url: WebUri(widget.url)),
                     initialUserScripts: UnmodifiableListView<UserScript>([]),
+                    initialSettings: settings,
                     onWebViewCreated: (controller) async {
                       webViewController = controller;
+                    },
+                    onPermissionRequest: (controller, request) async {
+                      return PermissionResponse(
+                          resources: request.resources,
+                          action: PermissionResponseAction.GRANT);
                     },
                     onLoadStart: (controller, url) async {
                       setState(() {
@@ -134,7 +152,6 @@ class _WebViewScreenState extends State<WebViewScreen> {
                         urlController.text = this.url;
                       });
                     },
-
                     onProgressChanged: (controller, progress) {
                       if (progress == 100) {
                         pullToRefreshController?.endRefreshing();

@@ -1,5 +1,7 @@
 import 'package:connectplus/presentation/screens/web_view_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../config/theme.dart';
@@ -204,23 +206,51 @@ class _EventFormScreenState extends State<EventFormScreen> {
                     ),
                     onPressed: () async {
                       //return await _launchURL();
-                      if ((_fnameKey.currentState!.validate() &
-                          _lnameKey.currentState!.validate() &
-                          _mobileKey.currentState!.validate() &
-                          _emailKey.currentState!.validate())) {
-                        return await _launchURL();
-                        // Navigator.of(context).push(
-                        //   MaterialPageRoute(
-                        //     builder: ((context) {
-                        //       String url =
-                        //           "https://www.connectteam.ir/Comminucation_Webservice.aspx?Code=2023050515040212617&fname=${fnameController.text}&lname=${lnameController.text}&mobile=0912&email=${emailController.text}";
-                        //       // "https://connectteam.ir/ComminucationGuest?Code=2023050413562293835";
-                        //       //"https://www.connectteam.ir/comminucationswebservice?Code=2023050413562293835&fname=${fnameController.text}&lname=${lnameController.text}&mobile=${mobileController.text}&email=${emailController.text}";
-                        //       return WebViewScreen(url: url, label: "Events");
-                        //     }),
-                        //   ),
-                        // );
+                      // if ((_fnameKey.currentState!.validate() &
+                      //     _lnameKey.currentState!.validate() &
+                      //     _mobileKey.currentState!.validate() &
+                      //     _emailKey.currentState!.validate())) {
+                      //   return await _launchURL();
+                      //   Navigator.of(context).push(
+                      //     MaterialPageRoute(
+                      //       builder: ((context) {
+                      //         String url =
+                      //             "https://www.connectteam.ir/Comminucation_Webservice.aspx?Code=2023050515040212617&fname=${fnameController.text}&lname=${lnameController.text}&mobile=0912&email=${emailController.text}";
+                      //         // "https://connectteam.ir/ComminucationGuest?Code=2023050413562293835";
+                      //         //"https://www.connectteam.ir/comminucationswebservice?Code=2023050413562293835&fname=${fnameController.text}&lname=${lnameController.text}&mobile=${mobileController.text}&email=${emailController.text}";
+                      //         return WebViewScreen(url: url, label: "Events");
+                      //       }),
+                      //     ),
+                      //   );
+                      // }
+
+                      if ((await Permission
+                                      .microphone.status.isPermanentlyDenied ==
+                                  true ||
+                              await Permission.microphone.status.isGranted ==
+                                  false) |
+                          (await Permission.camera.status.isPermanentlyDenied ==
+                                  true ||
+                              await Permission.camera.status.isGranted ==
+                                  false)) {
+                        Fluttertoast.showToast(
+                            msg: "Please grant permissions to continue.",
+                            toastLength: Toast.LENGTH_SHORT);
+                        openAppSettings();
+                        return;
                       }
+
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: ((context) {
+                            String url =
+                                "https://www.connectteam.ir/Comminucation_Webservice.aspx?Code=2023050515040212617&fname=${fnameController.text}&lname=${lnameController.text}&mobile=0912&email=${emailController.text}";
+                            url =
+                                "https://www.connectteam.ir/Comminucation_Webservice.aspx?Code=2023050518585157972&fname=amirmahdi&lname=nourkazemi&mobile=0912&email=nourkazemi80@gmail.com";
+                            return WebViewScreen(url: url, label: "Events");
+                          }),
+                        ),
+                      );
                     },
                     child: Text(
                       'Login',

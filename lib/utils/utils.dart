@@ -1,3 +1,7 @@
+import 'package:flutter/cupertino.dart';
+
+final RouteObserver<ModalRoute> routeObserver = RouteObserver<ModalRoute>();
+
 String? validateCode(String? value) {
   return value!.isEmpty | (value.length < 10) ? 'Enter a valid code' : null;
 }

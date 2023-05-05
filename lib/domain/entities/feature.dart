@@ -5,7 +5,12 @@ class Feature {
   String? siteUrl;
   bool isEnable = true;
   Color? iconColor;
+  IconData icon;
 
-  Feature(this.label,
-      {this.siteUrl, this.isEnable = true, this.iconColor});
+  Feature(
+      {required this.label,
+      this.siteUrl,
+      this.isEnable = true,
+      this.iconColor,
+      required this.icon});
 }
