@@ -2,6 +2,11 @@
     package="com.example.connectplus">
     <uses-sdk android:targetSdkVersion="22" android:minSdkVersion="17" />
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+<uses-permission android:name="android.permission.RECORD_AUDIO"/>
+<uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
+<uses-permission android:name="android.permission.AUDIO_CAPTURE"/>
+<uses-permission android:name="android.permission.CAMERA"/>
 
     <!-- Provide required visibility configuration for API level 30 and above -->
     <queries>

@@ -94,15 +94,16 @@ class FeatureItemWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SizedBox(
-                  child: Opacity(
-                opacity: (feature.isEnable) ? 1 : 0.5,
-                child: SvgPicture.asset(
-                  color: feature.iconColor?.withOpacity(0.5),
-                  'assets/images/cinvu-logo.svg',
-                  height: 40,
-                  width: 40,
+                child: Opacity(
+                  opacity: (feature.isEnable) ? 1 : 0.5,
+                  child: SvgPicture.asset(
+                    color: feature.iconColor?.withOpacity(0.5),
+                    'assets/images/cinvu-logo.svg',
+                    height: 40,
+                    width: 40,
+                  ),
                 ),
-              )),
+              ),
               Center(
                 child: Text(
                   feature.label,
