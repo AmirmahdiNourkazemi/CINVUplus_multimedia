@@ -90,7 +90,7 @@ class _HomeScreenState extends State<HomeScreen> with RouteAware {
       icon: Icons.speaker_group,
     ),
     Feature(
-      label: "Metaverse",
+      label: "Meta",
       isEnable: false,
       icon: Icons.airplay_sharp,
     ),

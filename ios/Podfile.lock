@@ -11,6 +11,8 @@ PODS:
     - Flutter
     - Toast
   - OrderedSet (5.0.0)
+  - permission_handler_apple (9.0.4):
+    - Flutter
   - Toast (4.0.0)
   - url_launcher_ios (0.0.1):
     - Flutter
@@ -19,6 +21,7 @@ DEPENDENCIES:
   - Flutter (from `Flutter`)
   - flutter_inappwebview (from `.symlinks/plugins/flutter_inappwebview/ios`)
   - fluttertoast (from `.symlinks/plugins/fluttertoast/ios`)
+  - permission_handler_apple (from `.symlinks/plugins/permission_handler_apple/ios`)
   - url_launcher_ios (from `.symlinks/plugins/url_launcher_ios/ios`)
 
 SPEC REPOS:
@@ -33,14 +36,17 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/flutter_inappwebview/ios"
   fluttertoast:
     :path: ".symlinks/plugins/fluttertoast/ios"
+  permission_handler_apple:
+    :path: ".symlinks/plugins/permission_handler_apple/ios"
   url_launcher_ios:
     :path: ".symlinks/plugins/url_launcher_ios/ios"
 
 SPEC CHECKSUMS:
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
-  flutter_inappwebview: bfd58618f49dc62f2676de690fc6dcda1d6c3721
+  flutter_inappwebview: 4fe74e5e65809c3d363febfd9e2b21aa79bb0f1c
   fluttertoast: eb263d302cc92e04176c053d2385237e9f43fad0
   OrderedSet: aaeb196f7fef5a9edf55d89760da9176ad40b93c
+  permission_handler_apple: 44366e37eaf29454a1e7b1b7d736c2cceaeb17ce
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
   url_launcher_ios: 08a3dfac5fb39e8759aeb0abbd5d9480f30fc8b4
 
