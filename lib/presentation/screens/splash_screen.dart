@@ -5,8 +5,6 @@ import 'package:connectplus/presentation/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../utils/utils.dart';
-
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
@@ -15,33 +13,9 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen>
-    with SingleTickerProviderStateMixin, RouteAware {
+    with SingleTickerProviderStateMixin {
   AnimationController? animationController;
   Animation<double>? animation;
-
-  @override
-  void didPush() {
-    print('HomePage: Called didPush');
-    super.didPush();
-  }
-
-  @override
-  void didPop() {
-    print('HomePage: Called didPop');
-    super.didPop();
-  }
-
-  @override
-  void didPopNext() {
-    print('HomePage: Called didPopNext');
-    super.didPopNext();
-  }
-
-  @override
-  void didPushNext() {
-    print('HomePage: Called didPushNext');
-    super.didPushNext();
-  }
 
   @override
   void initState() {
@@ -49,17 +23,14 @@ class _SplashScreenState extends State<SplashScreen>
       duration: const Duration(seconds: 2),
       vsync: this,
     );
-
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      routeObserver.subscribe(this, ModalRoute.of(context)!);
-    });
-
     animation = Tween<double>(begin: 0, end: 1).animate(animationController!);
 
     Timer(const Duration(seconds: 2), () {
       Navigator.of(context).push(
         MaterialPageRoute(
-          builder: (context) => const HomeScreen(),
+          builder: ((context) {
+            return const HomeScreen();
+          }),
         ),
       );
     });
@@ -79,11 +50,6 @@ class _SplashScreenState extends State<SplashScreen>
           child: Stack(
             fit: StackFit.expand,
             children: <Widget>[
-              Container(
-                decoration: BoxDecoration(
-                  color: backgroundColor,
-                ),
-              ),
               Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
@@ -96,7 +62,6 @@ class _SplashScreenState extends State<SplashScreen>
                           opacity: animation!,
                           child: const Icon(
                             Icons.lightbulb_outline,
-                            color: Colors.white,
                             size: 100.0,
                           ),
                         ),
@@ -112,23 +77,23 @@ class _SplashScreenState extends State<SplashScreen>
                           height: smallDistance,
                         ),
                         Column(
-                          children: const [
+                          children: [
                             Text(
                               'CINVU Plus',
                               style: TextStyle(
-                                color: Color(0xff313F6B),
+                                color: Theme.of(context).canvasColor,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 35,
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 4,
                             ),
-                            Text(
+                            const Text(
                               'www.cinvu.net',
                               style: TextStyle(
-                                color: Color(0xff313F6B),
-                                fontWeight: FontWeight.bold,
+                                color: primaryColor,
+                                fontWeight: bold,
                                 fontSize: 15,
                               ),
                             ),
@@ -142,22 +107,22 @@ class _SplashScreenState extends State<SplashScreen>
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        const CircularProgressIndicator(
-                          color: Colors.white,
+                        CircularProgressIndicator(
+                          color: Theme.of(context).canvasColor,
                           strokeWidth: 5.3,
-                          backgroundColor: Color(0xff313F6B),
+                          backgroundColor: primaryColor,
                         ),
                         Padding(
                           padding: EdgeInsets.only(top: largeDistance),
                         ),
-                        const Text(
+                        Text(
                           "Loading...",
                           softWrap: true,
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                            fontWeight: FontWeight.bold,
+                            fontWeight: bold,
                             fontSize: 20.0,
-                            color: Color(0xff313F6B),
+                            color: Theme.of(context).canvasColor,
                           ),
                         )
                       ],

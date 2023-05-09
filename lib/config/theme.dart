@@ -1,41 +1,36 @@
 import 'package:flutter/material.dart';
 
-double smallDistance = 8.0;
-double mediumDistance = 16.0;
-double largeDistance = 24.0;
-double xLargeDistance = 32.0;
+const smallDistance = 8.0;
+const mediumDistance = 16.0;
+const largeDistance = 24.0;
+const xLargeDistance = 32.0;
 
-double smallRadius = 8.0;
-double mediumRadius = 16.0;
-double largeRadius = 24.0;
-double xLargeRadius = 32.0;
+const smallRadius = 8.0;
+const mediumRadius = 16.0;
+const largeRadius = 24.0;
+const xLargeRadius = 32.0;
 
-double iconSize = 24.0;
+const iconSize = 24.0;
 
-Color primaryColor = const Color(0xff1A3665);
-Color blackColor = const Color(0xff1F1449);
-Color greyColor = const Color(0xff9698A9);
-Color backgroundColor = const Color(0xfff9f9f9);
+const primaryColor = Color(0xff1A3665);
 
-BottomNavigationBarThemeData bottomNavigationBarTheme =
-BottomNavigationBarThemeData(
-  selectedItemColor: primaryColor,
-  unselectedItemColor: greyColor,
-  showSelectedLabels: false,
-  showUnselectedLabels: false,
-  backgroundColor: primaryColor,
-  type: BottomNavigationBarType.fixed,
-);
+//light colors
+const blackColor = Color(0xff1F1449);
+const greyColor = Color(0xff9698A9);
+const backgroundColor = Color(0xfff9f9f9);
 
-FontWeight light = FontWeight.w300;
-FontWeight regular = FontWeight.w400;
-FontWeight medium = FontWeight.w500;
-FontWeight semiBold = FontWeight.w600;
-FontWeight bold = FontWeight.w700;
-FontWeight extraBold = FontWeight.w800;
-FontWeight black = FontWeight.w900;
+//dark colors
+const darkBackgroundColor = Color(0xff070f1e);
 
-ColorScheme colorScheme = ColorScheme(
+const light = FontWeight.w300;
+const regular = FontWeight.w400;
+const medium = FontWeight.w500;
+const semiBold = FontWeight.w600;
+const bold = FontWeight.w700;
+const extraBold = FontWeight.w800;
+const black = FontWeight.w900;
+
+const lightColorScheme = ColorScheme(
   primary: primaryColor,
   primaryContainer: blackColor,
   secondary: primaryColor,
@@ -47,6 +42,35 @@ ColorScheme colorScheme = ColorScheme(
   onSecondary: Colors.white,
   onSurface: Colors.white,
   onBackground: backgroundColor,
-  onError: Colors.white,
+  onError: Colors.red,
   brightness: Brightness.light,
 );
+
+const darkColorScheme = ColorScheme(
+  primary: primaryColor,
+  primaryContainer: Colors.white,
+  secondary: primaryColor,
+  secondaryContainer: primaryColor,
+  surface: primaryColor,
+  background: darkBackgroundColor,
+  error: Colors.red,
+  onPrimary: primaryColor,
+  onSecondary: primaryColor,
+  onSurface: Colors.white,
+  onBackground: darkBackgroundColor,
+  onError: Colors.red,
+  brightness: Brightness.dark,
+);
+
+ThemeData themeData(bool isDarkTheme, BuildContext context) {
+  return ThemeData(
+    canvasColor: (isDarkTheme) ? Colors.white : Colors.black,
+    primaryColor: primaryColor,
+    cardColor: (isDarkTheme) ? Colors.black : Colors.white,
+    scaffoldBackgroundColor:
+        (isDarkTheme) ? darkBackgroundColor : backgroundColor,
+    iconTheme:
+        IconThemeData(color: (isDarkTheme) ? Colors.white : Colors.black),
+    colorScheme: (isDarkTheme) ? darkColorScheme : lightColorScheme,
+  );
+}

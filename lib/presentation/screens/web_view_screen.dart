@@ -18,8 +18,6 @@ class WebViewScreen extends StatefulWidget {
 }
 
 class _WebViewScreenState extends State<WebViewScreen> {
-
-
   InAppWebViewSettings settings = InAppWebViewSettings(
       mediaPlaybackRequiresUserGesture: true,
       allowsInlineMediaPlayback: true,
@@ -96,87 +94,85 @@ class _WebViewScreenState extends State<WebViewScreen> {
             widget.label,
           ),
         ),
-        body: SafeArea(
-          child: Column(children: <Widget>[
-            Expanded(
-              child: Stack(
-                children: [
-                  InAppWebView(
-                    key: webViewKey,
-                    pullToRefreshController: pullToRefreshController,
-                    initialUrlRequest: URLRequest(url: WebUri(widget.url)),
-                    initialUserScripts: UnmodifiableListView<UserScript>([]),
-                    initialSettings: settings,
-                    onWebViewCreated: (controller) async {
-                      webViewController = controller;
-                    },
-                    onPermissionRequest: (controller, request) async {
-                      return PermissionResponse(
-                          resources: request.resources,
-                          action: PermissionResponseAction.GRANT);
-                    },
-                    onLoadStart: (controller, url) async {
-                      setState(() {
-                        this.url = url.toString();
-                        urlController.text = this.url;
-                      });
-                    },
-                    shouldOverrideUrlLoading:
-                        (controller, navigationAction) async {
-                      var uri = navigationAction.request.url!;
+        body: Column(children: <Widget>[
+              Expanded(
+                child: Stack(
+                  children: [
+                    InAppWebView(
+                      key: webViewKey,
+                      pullToRefreshController: pullToRefreshController,
+                      initialUrlRequest: URLRequest(url: WebUri(widget.url)),
+                      initialUserScripts: UnmodifiableListView<UserScript>([]),
+                      initialSettings: settings,
+                      onWebViewCreated: (controller) async {
+                        webViewController = controller;
+                      },
+                      onPermissionRequest: (controller, request) async {
+                        return PermissionResponse(
+                            resources: request.resources,
+                            action: PermissionResponseAction.GRANT);
+                      },
+                      onLoadStart: (controller, url) async {
+                        setState(() {
+                          this.url = url.toString();
+                          urlController.text = this.url;
+                        });
+                      },
+                      shouldOverrideUrlLoading:
+                          (controller, navigationAction) async {
+                        var uri = navigationAction.request.url!;
 
-                      if (![
-                        "http",
-                        "https",
-                        "file",
-                        "chrome",
-                        "data",
-                        "javascript",
-                        "about"
-                      ].contains(uri.scheme)) {
-                        if (await canLaunchUrl(uri)) {
-                          // Launch the App
-                          await launchUrl(
-                            uri,
-                          );
-                          // and cancel the request
-                          return NavigationActionPolicy.CANCEL;
+                        if (![
+                          "http",
+                          "https",
+                          "file",
+                          "chrome",
+                          "data",
+                          "javascript",
+                          "about"
+                        ].contains(uri.scheme)) {
+                          if (await canLaunchUrl(uri)) {
+                            // Launch the App
+                            await launchUrl(
+                              uri,
+                            );
+                            // and cancel the request
+                            return NavigationActionPolicy.CANCEL;
+                          }
                         }
-                      }
 
-                      return NavigationActionPolicy.ALLOW;
-                    },
-                    onLoadStop: (controller, url) async {
-                      setState(() {
-                        this.url = url.toString();
-                        urlController.text = this.url;
-                      });
-                    },
-                    onProgressChanged: (controller, progress) {
-                      if (progress == 100) {
-                        pullToRefreshController?.endRefreshing();
-                      }
-                      setState(() {
-                        this.progress = progress / 100;
-                        urlController.text = url;
-                      });
-                    },
-                    onUpdateVisitedHistory: (controller, url, isReload) {
-                      setState(() {
-                        this.url = url.toString();
-                        urlController.text = this.url;
-                      });
-                    },
-                  ),
-                  progress < 1.0
-                      ? LinearProgressIndicator(value: progress)
-                      : Container(),
-                ],
-              ),
-            )
-          ]),
-        ),
-      ),
+                        return NavigationActionPolicy.ALLOW;
+                      },
+                      onLoadStop: (controller, url) async {
+                        setState(() {
+                          this.url = url.toString();
+                          urlController.text = this.url;
+                        });
+                      },
+                      onProgressChanged: (controller, progress) {
+                        if (progress == 100) {
+                          pullToRefreshController?.endRefreshing();
+                        }
+                        setState(() {
+                          this.progress = progress / 100;
+                          urlController.text = url;
+                        });
+                      },
+                      onUpdateVisitedHistory: (controller, url, isReload) {
+                        setState(() {
+                          this.url = url.toString();
+                          urlController.text = this.url;
+                        });
+                      },
+                    ),
+                    progress < 1.0
+                        ? LinearProgressIndicator(value: progress)
+                        : Container(),
+                  ],
+                ),
+              )
+            ]),
+          ),
     );
   }
 }

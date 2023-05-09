@@ -50,7 +50,7 @@ class _EventFormScreenState extends State<EventFormScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
+                const Text(
                   'Event details',
                   style: TextStyle(fontSize: 20, fontWeight: bold),
                 ),
@@ -79,6 +79,7 @@ class _EventFormScreenState extends State<EventFormScreen> {
                           borderRadius: BorderRadius.circular(smallRadius),
                         ),
                         focusedBorder: OutlineInputBorder(
+                          borderSide: const BorderSide(color: primaryColor),
                           borderRadius: BorderRadius.circular(smallRadius),
                         ),
                         errorBorder: OutlineInputBorder(
@@ -113,6 +114,7 @@ class _EventFormScreenState extends State<EventFormScreen> {
                           borderRadius: BorderRadius.circular(smallRadius),
                         ),
                         focusedBorder: OutlineInputBorder(
+                          borderSide: const BorderSide(color: primaryColor),
                           borderRadius: BorderRadius.circular(smallRadius),
                         ),
                         errorBorder: OutlineInputBorder(
@@ -147,6 +149,7 @@ class _EventFormScreenState extends State<EventFormScreen> {
                           borderRadius: BorderRadius.circular(smallRadius),
                         ),
                         focusedBorder: OutlineInputBorder(
+                          borderSide: const BorderSide(color: primaryColor),
                           borderRadius: BorderRadius.circular(smallRadius),
                         ),
                         errorBorder: OutlineInputBorder(
@@ -181,6 +184,7 @@ class _EventFormScreenState extends State<EventFormScreen> {
                           borderRadius: BorderRadius.circular(smallRadius),
                         ),
                         focusedBorder: OutlineInputBorder(
+                          borderSide: const BorderSide(color: primaryColor),
                           borderRadius: BorderRadius.circular(smallRadius),
                         ),
                         errorBorder: OutlineInputBorder(
@@ -199,7 +203,7 @@ class _EventFormScreenState extends State<EventFormScreen> {
                 Center(
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      minimumSize: const Size(370, 64),
+                      minimumSize: const Size(double.infinity, 64),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(smallRadius),
                       ),
@@ -236,6 +240,7 @@ class _EventFormScreenState extends State<EventFormScreen> {
                         Fluttertoast.showToast(
                             msg: "Please grant permissions to continue.",
                             toastLength: Toast.LENGTH_SHORT);
+                        FocusScope.of(context).unfocus();
                         openAppSettings();
                         return;
                       }
@@ -252,10 +257,11 @@ class _EventFormScreenState extends State<EventFormScreen> {
                         ),
                       );
                     },
-                    child: Text(
+                    child: const Text(
                       'Login',
                       style: TextStyle(
                         fontSize: 24,
+                        color: Colors.white,
                         fontWeight: bold,
                       ),
                     ),

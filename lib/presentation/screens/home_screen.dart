@@ -1,13 +1,93 @@
 import 'dart:io';
 
+import 'package:circular_reveal_animation/circular_reveal_animation.dart';
 import 'package:connectplus/config/theme.dart';
 import 'package:connectplus/domain/entities/feature.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 
+import '../provider/theme_provider.dart';
 import '../widgets/feature_item_widget.dart';
+
+final _featureItems = [
+  Feature(
+      label: "Connect",
+      siteUrl: "https://cinvuplus.net/",
+      iconColor: const Color(0xffF4A130),
+      icon: Icons.contact_page),
+  Feature(
+      label: "OAS",
+      siteUrl: "https://office.cinvu.net/",
+      iconColor: const Color(0xff52B5E5),
+      icon: Icons.supervised_user_circle),
+  Feature(
+    label: "Cloud",
+    siteUrl: "https://cloud.cinvu.net/",
+    iconColor: const Color(0xff346DB4),
+    icon: Icons.cloud_download_outlined,
+  ),
+  Feature(
+    label: "Tube",
+    siteUrl: "https://connecttube.ir/",
+    iconColor: const Color(0xffF06235),
+    icon: Icons.video_camera_front_rounded,
+  ),
+  Feature(
+    label: "ERP",
+    siteUrl: "https://fa.conexusportal.com/",
+    iconColor: const Color(0xff7554A1),
+    icon: Icons.play_lesson_outlined,
+  ),
+  Feature(
+    label: "Events",
+    siteUrl: "https://connectteam.ir/Cinvuevent1",
+    iconColor: const Color(0xff27A16F),
+    icon: Icons.event_available,
+  ),
+  Feature(
+    label: "Mail",
+    isEnable: false,
+    icon: Icons.mail,
+  ),
+  Feature(
+    label: "Calling",
+    isEnable: false,
+    icon: Icons.call,
+  ),
+  Feature(
+    label: "T&Lms",
+    isEnable: false,
+    icon: Icons.laptop_mac_sharp,
+  ),
+  Feature(
+    label: "Market",
+    isEnable: false,
+    icon: Icons.shop,
+  ),
+  Feature(
+    label: "Exhibition",
+    isEnable: false,
+    icon: Icons.add_home_work,
+  ),
+  Feature(
+    label: "Inquiry",
+    isEnable: false,
+    icon: Icons.get_app_outlined,
+  ),
+  Feature(
+    label: "VoIP",
+    isEnable: false,
+    icon: Icons.speaker_group,
+  ),
+  Feature(
+    label: "Meta",
+    isEnable: false,
+    icon: Icons.airplay_sharp,
+  ),
+];
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -16,88 +96,48 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> with RouteAware {
+class _HomeScreenState extends State<HomeScreen>
+    with SingleTickerProviderStateMixin {
+  late AnimationController animationController;
+  late Animation<double> animation;
+  bool cirAn = false;
+
+  late DarkThemeProvider themeProvider;
+
   final _advancedDrawerController = AdvancedDrawerController();
 
-  final _featureItems = [
-    Feature(
-        label: "Connect",
-        siteUrl: "https://cinvuplus.net/",
-        iconColor: const Color.fromARGB(255, 3, 151, 165),
-        icon: Icons.contact_page),
-    Feature(
-        label: "OAS",
-        siteUrl: "https://office.cinvu.net/",
-        iconColor: const Color.fromARGB(255, 4, 46, 153),
-        icon: Icons.supervised_user_circle),
-    Feature(
-      label: "Cloud",
-      siteUrl: "https://cloud.cinvu.net/",
-      iconColor: const Color(0xff39a3fa),
-      icon: Icons.cloud_download_outlined,
-    ),
-    Feature(
-      label: "Tube",
-      siteUrl: "https://connecttube.ir/",
-      iconColor: const Color.fromARGB(255, 185, 60, 2),
-      icon: Icons.video_camera_front_rounded,
-    ),
-    Feature(
-      label: "ERP",
-      siteUrl: "https://fa.conexusportal.com/",
-      iconColor: const Color.fromARGB(255, 65, 5, 144),
-      icon: Icons.play_lesson_outlined,
-    ),
-    Feature(
-      label: "Events",
-      siteUrl: "https://connectteam.ir/Cinvuevent1",
-      iconColor: const Color.fromARGB(255, 3, 150, 37),
-      icon: Icons.event_available,
-    ),
-    Feature(
-      label: "Mail",
-      isEnable: false,
-      icon: Icons.mail,
-    ),
-    Feature(
-      label: "Calling",
-      isEnable: false,
-      icon: Icons.call,
-    ),
-    Feature(
-      label: "T&Lms",
-      isEnable: false,
-      icon: Icons.laptop_mac_sharp,
-    ),
-    Feature(
-      label: "Market",
-      isEnable: false,
-      icon: Icons.shop,
-    ),
-    Feature(
-      label: "Exhibition",
-      isEnable: false,
-      icon: Icons.add_home_work,
-    ),
-    Feature(
-      label: "Inquiry",
-      isEnable: false,
-      icon: Icons.get_app_outlined,
-    ),
-    Feature(
-      label: "VoIP",
-      isEnable: false,
-      icon: Icons.speaker_group,
-    ),
-    Feature(
-      label: "Metaverse",
-      isEnable: false,
-      icon: Icons.airplay_sharp,
-    ),
-  ];
+  @override
+  void initState() {
+    super.initState();
+
+    animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 300),
+    );
+    animation = CurvedAnimation(
+      parent: animationController,
+      curve: Curves.easeInOutSine,
+    );
+    animationController.forward();
+  }
 
   @override
   Widget build(BuildContext context) {
+    themeProvider = Provider.of<DarkThemeProvider>(context);
+
+    var size = MediaQuery.of(context).size;
+    return cirAn
+        ? CircularRevealAnimation(
+            centerOffset: Offset(size.width / 1.5, 64),
+            animation: animation,
+            child: _buildHomeBody(
+              themeProvider,
+            ),
+          )
+        : _buildHomeBody(themeProvider);
+  }
+
+  Widget _buildHomeBody(DarkThemeProvider themeProvider) {
     return WillPopScope(
         onWillPop: () async {
           if (_advancedDrawerController.value.visible) {
@@ -139,29 +179,40 @@ class _HomeScreenState extends State<HomeScreen> with RouteAware {
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
-                    Container(
-                      width: 128.0,
-                      height: 128.0,
-                      margin: const EdgeInsets.only(
-                        top: 24.0,
-                        bottom: 64.0,
-                      ),
-                      child: SvgPicture.asset(
-                        'assets/images/cinvu-logo.svg',
-                      ),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Expanded(
+                            child: Container(
+                          height: 128.0,
+                          margin: const EdgeInsets.only(
+                            top: 24.0,
+                            bottom: 64.0,
+                          ),
+                          child: SvgPicture.asset(
+                            'assets/images/cinvu-logo.svg',
+                          ),
+                        )),
+                        IconButton(
+                          onPressed: _onThemeChange,
+                          icon: Icon((themeProvider.darkTheme)
+                              ? Icons.nightlight
+                              : Icons.sunny),
+                          color: Colors.white,
+                        )
+                      ],
                     ),
                     SizedBox(height: smallDistance),
                     Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(smallDistance),
-                        color: primaryColor.withOpacity(0.2),
+                        color: primaryColor.withOpacity(0.7),
                       ),
                       child: ListTile(
                         onTap: () {},
-                        leading: Icon(Icons.roundabout_right_rounded,
-                            color: primaryColor),
-                        title: Text('About us',
-                            style: TextStyle(color: primaryColor)),
+                        leading: const Icon(Icons.roundabout_right_rounded,
+                            color: Colors.white),
+                        title: const Text('About us'),
                       ),
                     ),
                     ListTile(
@@ -223,6 +274,22 @@ class _HomeScreenState extends State<HomeScreen> with RouteAware {
             ),
           ),
         ));
+  }
+
+  void _onThemeChange() {
+    themeProvider.darkTheme = !themeProvider.darkTheme;
+
+    setState(() {
+      cirAn = true;
+    });
+
+    if (animationController.status == AnimationStatus.forward ||
+        animationController.status == AnimationStatus.completed) {
+      animationController.reset();
+      animationController.forward();
+    } else {
+      animationController.forward();
+    }
   }
 
   void _handleMenuButtonPressed() {

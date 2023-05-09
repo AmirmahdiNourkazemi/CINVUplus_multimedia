@@ -1,21 +1,13 @@
-import 'package:flutter/cupertino.dart';
-
-final RouteObserver<ModalRoute> routeObserver = RouteObserver<ModalRoute>();
-
 String? validateCode(String? value) {
   return value!.isEmpty | (value.length < 10) ? 'Enter a valid code' : null;
 }
 
 String? validateFirstName(String? value) {
-  return value!.isEmpty
-      ? 'Enter a first name code'
-      : null;
+  return value!.isEmpty ? 'Enter a first name code' : null;
 }
 
 String? validateLastName(String? value) {
-  return value!.isEmpty
-      ? 'Enter a first name code'
-      : null;
+  return value!.isEmpty ? 'Enter a first name code' : null;
 }
 
 String? validateMobile(String? value) {

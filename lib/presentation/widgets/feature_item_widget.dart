@@ -3,6 +3,7 @@ import 'package:connectplus/domain/entities/feature.dart';
 import 'package:connectplus/presentation/screens/event_form_screen.dart';
 import 'package:connectplus/presentation/screens/web_view_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class FeatureItemWidget extends StatelessWidget {
   final Feature feature;
@@ -36,7 +37,10 @@ class FeatureItemWidget extends StatelessWidget {
         if (!feature.isEnable) {
           final snackBar = SnackBar(
             backgroundColor: primaryColor,
-            content: Text('${feature.label} is available soon...'),
+            content: Text(
+              '${feature.label} is available soon...',
+              style: const TextStyle(color: Colors.white),
+            ),
             action: SnackBarAction(
               label: 'OK',
               textColor: Colors.white,
@@ -57,7 +61,7 @@ class FeatureItemWidget extends StatelessWidget {
               color: Colors.grey.withOpacity(0.1),
               spreadRadius: 4,
               blurRadius: 2,
-              offset: const Offset(2, 2), // changes position of shadow
+              offset: const Offset(1, 1), // changes position of shadow
             ),
           ],
           gradient: (feature.isEnable)
@@ -90,45 +94,68 @@ class FeatureItemWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                margin: EdgeInsets.only(right: smallDistance),
+                margin: const EdgeInsets.only(right: smallDistance),
                 child: Opacity(
-                  opacity: (feature.isEnable) ? 1 : 0.5,
-                  child: Icon(
-                    feature.icon,
-                    color: feature.iconColor?.withOpacity(0.5),
-                    size: 32,
+                  opacity: (feature.isEnable) ? 1 : 0.35,
+                  child: SvgPicture.asset(
+                    'assets/images/cinvu-logo.svg',
+                    height: 32,
+                    width: 32,
+                    color: (feature.isEnable) ? feature.iconColor : Colors.grey,
                   ),
                 ),
               ),
               Center(
-                child: Text(
-                  feature.label,
-                  style: TextStyle(
-                    foreground: Paint()
-                      ..shader = (feature.isEnable)
-                          ? LinearGradient(
-                              colors: <Color>[
-                                feature.iconColor!.withOpacity(0.9),
-                                feature.iconColor!.withOpacity(0.8),
-                                feature.iconColor!.withOpacity(0.3),
-                              ],
-                              begin: Alignment.topCenter,
-                              end: Alignment.bottomRight,
-                            ).createShader(
-                              const Rect.fromLTWH(100.0, 0.0, 100.0, 100.0))
-                          : LinearGradient(
-                              colors: <Color>[
-                                Colors.black.withOpacity(0.3),
-                                Colors.black.withOpacity(0.3),
-                                Colors.black.withOpacity(0.3)
-                              ],
-                            ).createShader(
-                              const Rect.fromLTWH(0.0, 0.0, 200.0, 100.0)),
-                    fontSize: 30,
-                    // color: (feature.isEnable)
-                    //     ? feature.iconColor
-                    //     : Colors.black.withOpacity(0.3),
-                    fontWeight: FontWeight.bold,
+                child: Padding(
+                  padding: const EdgeInsets.only(left: smallDistance),
+                  child: Row(
+                    children: [
+                      Opacity(
+                        opacity: (feature.isEnable) ? 1 : 0.5,
+                        child: Icon(
+                          feature.icon,
+                          color: feature.iconColor?.withOpacity(0.8),
+                          size: 25,
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 7,
+                      ),
+                      Text(
+                        feature.label,
+                        style: TextStyle(
+                          foreground: Paint()
+                            ..shader = (feature.isEnable)
+                                ? LinearGradient(
+                                    colors: <Color>[
+                                      feature.iconColor!.withOpacity(1),
+                                      feature.iconColor!.withOpacity(0.8),
+                                      feature.iconColor!.withOpacity(0.3),
+                                    ],
+                                    begin: Alignment.topCenter,
+                                    end: Alignment.bottomRight,
+                                  ).createShader(const Rect.fromLTWH(
+                                    200.0, 0.0, 200.0, 100.0))
+                                : LinearGradient(
+                                    colors: <Color>[
+                                      Theme.of(context)
+                                          .canvasColor
+                                          .withOpacity(0.3),
+                                      Theme.of(context)
+                                          .canvasColor
+                                          .withOpacity(0.3),
+                                      Theme.of(context)
+                                          .canvasColor
+                                          .withOpacity(0.3)
+                                    ],
+                                  ).createShader(
+                                    const Rect.fromLTWH(0.0, 0.0, 200.0, 100.0),
+                                  ),
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ),
