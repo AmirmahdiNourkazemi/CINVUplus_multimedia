@@ -54,7 +54,7 @@ class FeatureItemWidget extends StatelessWidget {
         }
       },
       child: Container(
-        margin: EdgeInsets.all(smallDistance),
+        margin: const EdgeInsets.all(smallDistance),
         decoration: BoxDecoration(
           boxShadow: [
             BoxShadow(
@@ -66,19 +66,19 @@ class FeatureItemWidget extends StatelessWidget {
           ],
           gradient: (feature.isEnable)
               ? LinearGradient(
-                  colors: [
-                    feature.iconColor!.withOpacity(0.24),
-                    feature.iconColor!.withOpacity(0.05)
-                  ],
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                )
+            colors: [
+              feature.iconColor!.withOpacity(0.24),
+              feature.iconColor!.withOpacity(0.05)
+            ],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          )
               : LinearGradient(colors: [
-                  Colors.grey.withOpacity(0.3),
-                  Colors.grey.withOpacity(0.3)
-                ]),
+            Colors.grey.withOpacity(0.3),
+            Colors.grey.withOpacity(0.3)
+          ]),
           color:
-              (feature.isEnable) ? Colors.white : Colors.grey.withOpacity(0.3),
+          (feature.isEnable) ? Colors.white : Colors.grey.withOpacity(0.3),
           border: Border.all(
             width: 1,
             color: (feature.isEnable)
@@ -127,30 +127,30 @@ class FeatureItemWidget extends StatelessWidget {
                           foreground: Paint()
                             ..shader = (feature.isEnable)
                                 ? LinearGradient(
-                                    colors: <Color>[
-                                      feature.iconColor!.withOpacity(1),
-                                      feature.iconColor!.withOpacity(0.8),
-                                      feature.iconColor!.withOpacity(0.3),
-                                    ],
-                                    begin: Alignment.topCenter,
-                                    end: Alignment.bottomRight,
-                                  ).createShader(const Rect.fromLTWH(
-                                    200.0, 0.0, 200.0, 100.0))
+                              colors: <Color>[
+                                feature.iconColor!.withOpacity(1),
+                                feature.iconColor!.withOpacity(0.8),
+                                feature.iconColor!.withOpacity(0.3),
+                              ],
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomRight,
+                            ).createShader(const Rect.fromLTWH(
+                                200.0, 0.0, 200.0, 100.0))
                                 : LinearGradient(
-                                    colors: <Color>[
-                                      Theme.of(context)
-                                          .canvasColor
-                                          .withOpacity(0.3),
-                                      Theme.of(context)
-                                          .canvasColor
-                                          .withOpacity(0.3),
-                                      Theme.of(context)
-                                          .canvasColor
-                                          .withOpacity(0.3)
-                                    ],
-                                  ).createShader(
-                                    const Rect.fromLTWH(0.0, 0.0, 200.0, 100.0),
-                                  ),
+                              colors: <Color>[
+                                Theme.of(context)
+                                    .canvasColor
+                                    .withOpacity(0.3),
+                                Theme.of(context)
+                                    .canvasColor
+                                    .withOpacity(0.3),
+                                Theme.of(context)
+                                    .canvasColor
+                                    .withOpacity(0.3)
+                              ],
+                            ).createShader(
+                              const Rect.fromLTWH(0.0, 0.0, 200.0, 100.0),
+                            ),
                           fontSize: 30,
                           fontWeight: FontWeight.bold,
                         ),

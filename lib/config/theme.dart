@@ -68,9 +68,9 @@ ThemeData themeData(bool isDarkTheme, BuildContext context) {
     primaryColor: primaryColor,
     cardColor: (isDarkTheme) ? Colors.black : Colors.white,
     scaffoldBackgroundColor:
-        (isDarkTheme) ? darkBackgroundColor : backgroundColor,
+    (isDarkTheme) ? darkBackgroundColor : backgroundColor,
     iconTheme:
-        IconThemeData(color: (isDarkTheme) ? Colors.white : Colors.black),
+    IconThemeData(color: (isDarkTheme) ? Colors.white : Colors.black),
     colorScheme: (isDarkTheme) ? darkColorScheme : lightColorScheme,
   );
 }

@@ -45,7 +45,7 @@ class _EventFormScreenState extends State<EventFormScreen> {
       body: SingleChildScrollView(
         child: SafeArea(
           child: Padding(
-            padding: EdgeInsets.all(mediumDistance),
+            padding: const EdgeInsets.all(mediumDistance),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -54,10 +54,10 @@ class _EventFormScreenState extends State<EventFormScreen> {
                   'Event details',
                   style: TextStyle(fontSize: 20, fontWeight: bold),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: largeDistance,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: mediumDistance,
                 ),
                 Form(
@@ -92,7 +92,7 @@ class _EventFormScreenState extends State<EventFormScreen> {
                         ),
                       ),
                     )),
-                SizedBox(
+                const SizedBox(
                   height: mediumDistance,
                 ),
                 Form(
@@ -127,7 +127,7 @@ class _EventFormScreenState extends State<EventFormScreen> {
                         ),
                       ),
                     )),
-                SizedBox(
+                const SizedBox(
                   height: mediumDistance,
                 ),
                 Form(
@@ -162,7 +162,7 @@ class _EventFormScreenState extends State<EventFormScreen> {
                         ),
                       ),
                     )),
-                SizedBox(
+                const SizedBox(
                   height: mediumDistance,
                 ),
                 Form(
@@ -197,7 +197,7 @@ class _EventFormScreenState extends State<EventFormScreen> {
                         ),
                       ),
                     )),
-                SizedBox(
+                const SizedBox(
                   height: xLargeDistance,
                 ),
                 Center(
@@ -267,7 +267,7 @@ class _EventFormScreenState extends State<EventFormScreen> {
                     ),
                   ),
                 ),
-                SizedBox(height: largeDistance),
+                const SizedBox(height: largeDistance),
               ],
             ),
           ),

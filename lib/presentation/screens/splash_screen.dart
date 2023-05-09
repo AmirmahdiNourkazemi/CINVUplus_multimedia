@@ -26,7 +26,7 @@ class _SplashScreenState extends State<SplashScreen>
     animation = Tween<double>(begin: 0, end: 1).animate(animationController!);
 
     Timer(const Duration(seconds: 2), () {
-      Navigator.of(context).push(
+      Navigator.of(context).pushReplacement(
         MaterialPageRoute(
           builder: ((context) {
             return const HomeScreen();
@@ -65,7 +65,7 @@ class _SplashScreenState extends State<SplashScreen>
                             size: 100.0,
                           ),
                         ),
-                        Padding(
+                        const Padding(
                           padding: EdgeInsets.only(top: smallDistance),
                         ),
                         SvgPicture.asset(
@@ -73,7 +73,7 @@ class _SplashScreenState extends State<SplashScreen>
                           height: 200,
                           width: 200,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: smallDistance,
                         ),
                         Column(
@@ -112,7 +112,7 @@ class _SplashScreenState extends State<SplashScreen>
                           strokeWidth: 5.3,
                           backgroundColor: primaryColor,
                         ),
-                        Padding(
+                        const Padding(
                           padding: EdgeInsets.only(top: largeDistance),
                         ),
                         Text(

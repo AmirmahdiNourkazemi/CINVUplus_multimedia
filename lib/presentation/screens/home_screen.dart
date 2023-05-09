@@ -128,12 +128,12 @@ class _HomeScreenState extends State<HomeScreen>
     var size = MediaQuery.of(context).size;
     return cirAn
         ? CircularRevealAnimation(
-            centerOffset: Offset(size.width / 1.5, 64),
-            animation: animation,
-            child: _buildHomeBody(
-              themeProvider,
-            ),
-          )
+      centerOffset: Offset(size.width / 1.5, 64),
+      animation: animation,
+      child: _buildHomeBody(
+        themeProvider,
+      ),
+    )
         : _buildHomeBody(themeProvider);
   }
 
@@ -167,7 +167,7 @@ class _HomeScreenState extends State<HomeScreen>
           animateChildDecoration: true,
           rtlOpening: false,
           disabledGestures: false,
-          childDecoration: BoxDecoration(
+          childDecoration: const BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(mediumRadius)),
           ),
           drawer: SafeArea(
@@ -175,7 +175,7 @@ class _HomeScreenState extends State<HomeScreen>
               textColor: Colors.white,
               iconColor: Colors.white,
               child: Container(
-                padding: EdgeInsets.symmetric(horizontal: smallDistance),
+                padding: const EdgeInsets.symmetric(horizontal: smallDistance),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
@@ -184,15 +184,15 @@ class _HomeScreenState extends State<HomeScreen>
                       children: [
                         Expanded(
                             child: Container(
-                          height: 128.0,
-                          margin: const EdgeInsets.only(
-                            top: 24.0,
-                            bottom: 64.0,
-                          ),
-                          child: SvgPicture.asset(
-                            'assets/images/cinvu-logo.svg',
-                          ),
-                        )),
+                              height: 128.0,
+                              margin: const EdgeInsets.only(
+                                top: 24.0,
+                                bottom: 64.0,
+                              ),
+                              child: SvgPicture.asset(
+                                'assets/images/cinvu-logo.svg',
+                              ),
+                            )),
                         IconButton(
                           onPressed: _onThemeChange,
                           icon: Icon((themeProvider.darkTheme)
@@ -202,7 +202,7 @@ class _HomeScreenState extends State<HomeScreen>
                         )
                       ],
                     ),
-                    SizedBox(height: smallDistance),
+                    const SizedBox(height: smallDistance),
                     Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(smallDistance),
@@ -241,7 +241,7 @@ class _HomeScreenState extends State<HomeScreen>
           child: Scaffold(
             appBar: AppBar(
               leading: Padding(
-                padding: EdgeInsets.only(left: smallDistance),
+                padding: const EdgeInsets.only(left: smallDistance),
                 child: IconButton(
                   onPressed: _handleMenuButtonPressed,
                   icon: const Icon(Icons.menu),
@@ -252,11 +252,11 @@ class _HomeScreenState extends State<HomeScreen>
             body: AnimationLimiter(
               child: GridView.count(
                   childAspectRatio: 1.4,
-                  padding: EdgeInsets.all(smallDistance),
+                  padding: const EdgeInsets.all(smallDistance),
                   crossAxisCount: 2,
                   children: List.generate(
                     _featureItems.length,
-                    (int index) {
+                        (int index) {
                       return AnimationConfiguration.staggeredGrid(
                         position: index,
                         duration: const Duration(milliseconds: 350),
