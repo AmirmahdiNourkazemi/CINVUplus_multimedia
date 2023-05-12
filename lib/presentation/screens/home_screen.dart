@@ -61,19 +61,19 @@ final _featureItems = [
         'Our events platform is the ultimate tool for planning, promoting, and managing events of all sizes and types. From conferences ,festivals, and social gatherings, our platform provides a comprehensive suite of features that help event organizers plan and execute successful events.',
   ),
   Feature(
-    label: "C.Room",
+    label: "Room",
     isEnable: false,
     iconColor: const Color(0xff4e65AB),
     icon: Icons.add_home_work_outlined,
   ),
   Feature(
-    label: "C.Mail",
+    label: "Mail",
     isEnable: false,
     iconColor: const Color(0xff4e65AB),
     icon: Icons.mail_outline,
   ),
   Feature(
-    label: "C.Call",
+    label: "Call",
     isEnable: false,
     iconColor: const Color(0xff6276b7),
     icon: Icons.call_outlined,
