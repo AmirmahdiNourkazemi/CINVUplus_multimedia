@@ -40,7 +40,7 @@ class FeatureItemWidget extends StatelessWidget {
                   decoration: BoxDecoration(
                     color: Theme.of(context).primaryColor,
                   ),
-                  height: 300,
+                  height: 330,
                   child: Padding(
                     padding: const EdgeInsets.only(top: 10, left: 10),
                     child: Column(
@@ -110,7 +110,7 @@ class FeatureItemWidget extends StatelessWidget {
 
               type: QuickAlertType.info,
               title: 'Warning',
-              text: '${feature.label} is availabe soon ...',
+              text: '${feature.label} is available soon ...',
             );
           }
         },
@@ -221,7 +221,7 @@ class FeatureItemWidget extends StatelessWidget {
                         Text(
                           feature.label,
                           style: const TextStyle(
-                            fontSize: 25,
+                            fontSize: 23,
                             color: Colors.white,
                             fontWeight: FontWeight.w600,
                           ),
