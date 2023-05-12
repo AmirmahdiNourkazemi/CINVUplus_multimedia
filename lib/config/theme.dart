@@ -17,7 +17,7 @@ const primaryColor = Color(0xff1A3665);
 //light colors
 const blackColor = Color(0xff1F1449);
 const greyColor = Color(0xff9698A9);
-const backgroundColor = Color(0xfff9f9f9);
+const backgroundColor = Color(0xffededed);
 
 //dark colors
 const darkBackgroundColor = Color(0xff070f1e);
@@ -68,9 +68,9 @@ ThemeData themeData(bool isDarkTheme, BuildContext context) {
     primaryColor: primaryColor,
     cardColor: (isDarkTheme) ? Colors.black : Colors.white,
     scaffoldBackgroundColor:
-    (isDarkTheme) ? darkBackgroundColor : backgroundColor,
+        (isDarkTheme) ? darkBackgroundColor : backgroundColor,
     iconTheme:
-    IconThemeData(color: (isDarkTheme) ? Colors.white : Colors.black),
+        IconThemeData(color: (isDarkTheme) ? Colors.white : Colors.black),
     colorScheme: (isDarkTheme) ? darkColorScheme : lightColorScheme,
   );
 }

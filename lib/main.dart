@@ -8,7 +8,9 @@ import 'package:provider/provider.dart';
 import 'config/theme.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    const MyApp(),
+  );
 }
 
 class MyApp extends StatefulWidget {

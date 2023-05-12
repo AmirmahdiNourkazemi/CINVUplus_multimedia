@@ -6,11 +6,14 @@ class Feature {
   bool isEnable = true;
   Color? iconColor;
   IconData icon;
+  String? description;
 
-  Feature(
-      {required this.label,
-      this.siteUrl,
-      this.isEnable = true,
-      this.iconColor,
-      required this.icon});
+  Feature({
+    required this.label,
+    this.siteUrl,
+    this.isEnable = true,
+    this.iconColor,
+    required this.icon,
+    this.description
+  });
 }
