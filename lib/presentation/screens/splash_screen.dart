@@ -4,6 +4,7 @@ import 'package:connectplus/config/theme.dart';
 import 'package:connectplus/presentation/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:showcaseview/showcaseview.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -29,7 +30,7 @@ class _SplashScreenState extends State<SplashScreen>
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
           builder: ((context) {
-            return const HomeScreen();
+            return ShowCaseWidget(builder: Builder(builder: (context) => const HomeScreen(),),);
           }),
         ),
       );

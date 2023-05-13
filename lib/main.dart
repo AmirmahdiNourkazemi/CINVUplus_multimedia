@@ -1,13 +1,16 @@
-import 'package:connectplus/constant/constan.dart';
+import 'package:connectplus/constant/constant.dart';
+import 'package:connectplus/data/shared_preference.dart';
 import 'package:connectplus/presentation/provider/theme_provider.dart';
 import 'package:connectplus/presentation/screens/home_screen.dart';
 import 'package:connectplus/presentation/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import 'package:showcaseview/showcaseview.dart';
 
 import 'config/theme.dart';
 
-void main() {
+Future<void> main() async {
   runApp(
     const MyApp(),
   );
@@ -30,8 +33,9 @@ class _MyAppState extends State<MyApp> {
   }
 
   void getCurrentAppTheme() async {
+    await themeChangeProvider.sharedPrefs.init();
     themeChangeProvider.darkTheme =
-        await themeChangeProvider.darkThemePreference.getTheme();
+        (themeChangeProvider.sharedPrefs.isDarkTheme());
   }
 
   @override
@@ -45,9 +49,31 @@ class _MyAppState extends State<MyApp> {
           return MaterialApp(
             debugShowCheckedModeBanner: false,
             theme: themeData(themeChangeProvider.darkTheme, context),
-            home: const SplashScreen(),
+            home: Scaffold(
+              body: ShowCaseWidget(
+                onStart: (index, key) {
+                  debugPrint('onStart: $index, $key');
+                },
+                onComplete: (index, key) {
+                  debugPrint("hiiiiiiiiiiiiiiiiiiiiiiiii");
+                  if (index == 4) {
+                    SystemChrome.setSystemUIOverlayStyle(
+                      SystemUiOverlayStyle.light.copyWith(
+                        statusBarIconBrightness: Brightness.dark,
+                        statusBarColor: Colors.white,
+                      ),
+                    );
+                  }
+                },
+                blurValue: 1,
+                builder: Builder(builder: (context) => const SplashScreen()),
+                autoPlayDelay: const Duration(seconds: 3),
+              ),
+            ),
             routes: <String, WidgetBuilder>{
               HOME_SCREEN: (BuildContext context) => const HomeScreen(),
+              EVENT_FORM_SCREEN: (BuildContext context) => const HomeScreen(),
+              WEB_VIEW_SCREEN: (BuildContext context) => const HomeScreen(),
             },
           );
         },
