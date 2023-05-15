@@ -1,10 +1,9 @@
 import 'package:connectplus/constant/constant.dart';
-import 'package:connectplus/data/shared_preference.dart';
 import 'package:connectplus/presentation/provider/theme_provider.dart';
+import 'package:connectplus/presentation/screens/event_form_screen.dart';
 import 'package:connectplus/presentation/screens/home_screen.dart';
 import 'package:connectplus/presentation/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:showcaseview/showcaseview.dart';
 
@@ -51,20 +50,8 @@ class _MyAppState extends State<MyApp> {
             theme: themeData(themeChangeProvider.darkTheme, context),
             home: Scaffold(
               body: ShowCaseWidget(
-                onStart: (index, key) {
-                  debugPrint('onStart: $index, $key');
-                },
-                onComplete: (index, key) {
-                  debugPrint("hiiiiiiiiiiiiiiiiiiiiiiiii");
-                  if (index == 4) {
-                    SystemChrome.setSystemUIOverlayStyle(
-                      SystemUiOverlayStyle.light.copyWith(
-                        statusBarIconBrightness: Brightness.dark,
-                        statusBarColor: Colors.white,
-                      ),
-                    );
-                  }
-                },
+                onStart: (index, key) {},
+                onComplete: (index, key) {},
                 blurValue: 1,
                 builder: Builder(builder: (context) => const SplashScreen()),
                 autoPlayDelay: const Duration(seconds: 3),
@@ -72,8 +59,8 @@ class _MyAppState extends State<MyApp> {
             ),
             routes: <String, WidgetBuilder>{
               HOME_SCREEN: (BuildContext context) => const HomeScreen(),
-              EVENT_FORM_SCREEN: (BuildContext context) => const HomeScreen(),
-              WEB_VIEW_SCREEN: (BuildContext context) => const HomeScreen(),
+              EVENT_FORM_SCREEN: (BuildContext context) =>
+                  const EventFormScreen(),
             },
           );
         },
