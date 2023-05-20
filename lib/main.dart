@@ -1,6 +1,5 @@
-
+import 'package:connectplus/constant/constan.dart';
 import 'package:connectplus/presentation/provider/theme_provider.dart';
-import 'package:connectplus/presentation/screens/event_form_screen.dart';
 import 'package:connectplus/presentation/screens/home_screen.dart';
 import 'package:connectplus/presentation/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -49,8 +48,6 @@ class _MyAppState extends State<MyApp> {
             home: const SplashScreen(),
             routes: <String, WidgetBuilder>{
               HOME_SCREEN: (BuildContext context) => const HomeScreen(),
-              EVENT_FORM_SCREEN: (BuildContext context) => const HomeScreen(),
-              WEB_VIEW_SCREEN: (BuildContext context) => const HomeScreen(),
             },
           );
         },
