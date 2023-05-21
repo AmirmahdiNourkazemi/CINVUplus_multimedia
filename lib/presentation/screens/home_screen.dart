@@ -205,13 +205,14 @@ class _HomeScreenState extends State<HomeScreen>
                     children: [
                       Expanded(
                         child: Container(
-                          height: 128.0,
+                          height: 115.0,
                           margin: const EdgeInsets.only(
                             top: 24.0,
                             bottom: 64.0,
                           ),
                           child: SvgPicture.asset(
                             'assets/images/cinvu-logo.svg',
+                            color: Colors.white.withOpacity(0.7),
                           ),
                         ),
                       ),
@@ -231,14 +232,55 @@ class _HomeScreenState extends State<HomeScreen>
                       color: primaryColor.withOpacity(0.7),
                     ),
                     child: ListTile(
+                      subtitle: const Text(
+                        'The COMSTECH Inter-Islamic Network on Virtual Universities is an autonomous, non-political organization with an international approach and under the auspices of the Standing Committee on Scientific and Technological Cooperation of OIC member countries.',
+                        style: TextStyle(
+                          fontSize: 10,
+                          color: Colors.white60,
+                        ),
+                      ),
                       onTap: () {},
-                      leading: const Icon(Icons.roundabout_right_rounded,
-                          color: Colors.white),
+                      leading: const Icon(
+                        Icons.roundabout_right_rounded,
+                        color: Colors.white,
+                      ),
                       title: const Text('About us'),
                     ),
                   ),
                   ListTile(
                     onTap: () {},
+                    subtitle: Column(
+                      children: [
+                        Row(
+                          children: const [
+                            Icon(
+                              Icons.mail_outline,
+                              size: 15,
+                              color: Colors.white54,
+                            ),
+                            Text(
+                              ' Email: info@cinvu.net',
+                              style: TextStyle(
+                                fontSize: 10,
+                                color: Colors.white60,
+                              ),
+                            ),
+                          ],
+                        ),
+                        Row(
+                          children: const [
+                            Icon(Icons.phone, size: 15, color: Colors.white54),
+                            Text(
+                              ' Phone: +982191011078',
+                              style: TextStyle(
+                                fontSize: 10,
+                                color: Colors.white60,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                     leading: const Icon(Icons.contact_support_outlined),
                     title: const Text('Contact us'),
                   ),
