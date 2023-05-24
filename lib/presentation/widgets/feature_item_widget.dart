@@ -119,7 +119,7 @@ class FeatureItemWidget extends StatelessWidget {
             Navigator.of(context).push(
               MaterialPageRoute(
                 builder: ((context) {
-                  if (feature.label == "Events") {
+                  if (feature.label == null) {
                     return const EventFormScreen();
                   } else {
                     return WebViewScreen(

@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:circular_reveal_animation/circular_reveal_animation.dart';
 import 'package:connectplus/config/theme.dart';
 import 'package:connectplus/domain/entities/feature.dart';
@@ -54,7 +53,7 @@ final _featureItems = [
           's experience and foster engagement within the community.'),
   Feature(
     label: "Events",
-    siteUrl: "https://connectteam.ir/Cinvuevent1",
+    siteUrl: "https://events.cinvu.net",
     iconColor: const Color(0xff455996),
     icon: Icons.event_available_outlined,
     description:
@@ -68,7 +67,8 @@ final _featureItems = [
   ),
   Feature(
     label: "Mail",
-    isEnable: false,
+    siteUrl: "https://mail.cinvu.net:2096",
+    //isEnable: false,
     iconColor: const Color(0xff4e65AB),
     icon: Icons.mail_outline,
   ),
@@ -80,7 +80,7 @@ final _featureItems = [
   ),
   Feature(
     label: "LMS",
-    isEnable: false,
+    siteUrl: "https://lms.cinvu.net",
     iconColor: const Color(0xff6276b7),
     icon: Icons.laptop_mac_sharp,
   ),
@@ -92,7 +92,8 @@ final _featureItems = [
   ),
   Feature(
     label: "Inquiry",
-    isEnable: false,
+    siteUrl: "https://inquiry.cinvu.net",
+    //isEnable: false,
     iconColor: const Color(0xff7788c1),
     icon: Icons.get_app_outlined,
   ),
@@ -279,6 +280,17 @@ class _HomeScreenState extends State<HomeScreen>
                             ),
                           ],
                         ),
+                      ],
+                    ),
+                    leading: const Icon(Icons.contact_support_outlined),
+                    title: const Text('Contact us'),
+                  ),
+                  ListTile(
+                    onTap: () {},
+                    subtitle: Column(
+                      children: [
+                        
+                      const Text ('Calendar')
                       ],
                     ),
                     leading: const Icon(Icons.contact_support_outlined),
