@@ -14,7 +14,7 @@ import '../widgets/feature_item_widget.dart';
 final _featureItems = [
   Feature(
       label: "ERP",
-      siteUrl: "https://fa.conexusportal.com/",
+      siteUrl: "https://erp.cinvu.net",
       iconColor: const Color(0xff313f6b),
       icon: Icons.play_lesson_outlined,
       description:
@@ -29,7 +29,7 @@ final _featureItems = [
   ),
   Feature(
     label: "Connect",
-    siteUrl: "https://cinvuplus.net/",
+    siteUrl: "https://connect.cinvu.net/",
     iconColor: const Color(0xff3b4c81),
     icon: Icons.contact_page_outlined,
     description:
@@ -37,7 +37,7 @@ final _featureItems = [
   ),
   Feature(
     label: "Automation",
-    siteUrl: "https://office.cinvu.net/",
+    siteUrl: "https://automation.cinvu.net/",
     iconColor: const Color(0xff3b4c81),
     icon: Icons.supervised_user_circle_outlined,
     description:
@@ -86,7 +86,8 @@ final _featureItems = [
   ),
   Feature(
     label: "Market",
-    isEnable: false,
+    siteUrl: "https://market.cinvu.net/en",
+    //isEnable: false,
     iconColor: const Color(0xff7788c1),
     icon: Icons.shop,
   ),
@@ -99,7 +100,8 @@ final _featureItems = [
   ),
   Feature(
     label: "Accredition",
-    isEnable: false,
+    siteUrl: 'https://accreditation.cinvu.net',
+    //isEnable: false,
     iconColor: const Color(0xff8c9bca),
     icon: Icons.document_scanner_rounded,
   ),
@@ -287,12 +289,6 @@ class _HomeScreenState extends State<HomeScreen>
                   ),
                   ListTile(
                     onTap: () {},
-                    subtitle: Column(
-                      children: [
-                        
-                      const Text ('Calendar')
-                      ],
-                    ),
                     leading: const Icon(Icons.contact_support_outlined),
                     title: const Text('Contact us'),
                   ),
