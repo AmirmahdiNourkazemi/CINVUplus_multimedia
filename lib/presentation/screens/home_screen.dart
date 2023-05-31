@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:circular_reveal_animation/circular_reveal_animation.dart';
 import 'package:connectplus/config/theme.dart';
 import 'package:connectplus/domain/entities/feature.dart';
+import 'package:connectplus/presentation/screens/calender_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
@@ -284,13 +285,21 @@ class _HomeScreenState extends State<HomeScreen>
                         ),
                       ],
                     ),
-                    leading: const Icon(Icons.contact_support_outlined),
+                    leading: const Icon(Icons.contact_support_sharp),
                     title: const Text('Contact us'),
                   ),
                   ListTile(
-                    onTap: () {},
-                    leading: const Icon(Icons.contact_support_outlined),
-                    title: const Text('Contact us'),
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return CalendarScreen();
+                          },
+                        ),
+                      );
+                    },
+                    leading: const Icon(Icons.calendar_today_rounded),
+                    title: const Text('Calendar'),
                   ),
                   const Spacer(),
                   Container(
