@@ -61,16 +61,21 @@ final _featureItems = [
         'Our events platform is the ultimate tool for planning, promoting, and managing events of all sizes and types. From conferences ,festivals, and social gatherings, our platform provides a comprehensive suite of features that help event organizers plan and execute successful events.',
   ),
   Feature(
-    label: "Room",
-    isEnable: false,
-    iconColor: const Color(0xff4e65AB),
-    icon: Icons.add_home_work_outlined,
-  ),
+      label: "Room",
+      siteUrl:
+          "https://connectteam.ir/Comminucationpublic?Code=2023052716181317663",
+      // isEnable: false,
+      iconColor: const Color(0xff4e65AB),
+      icon: Icons.add_home_work_outlined,
+      description:
+          "Room virtual space where people can connect and collaborate with each other in real-time. It's a video conferencing platform that allows users to participate in virtual meetings, webinars, and virtual classrooms."),
   Feature(
     label: "Mail",
     siteUrl: "https://mail.cinvu.net:2096",
     //isEnable: false,
     iconColor: const Color(0xff4e65AB),
+    description:
+        "A mail system like Gmail is an email service that allows users to send and receive messages electronically over the internet. Similar to Gmail, a mail system typically includes features like an inbox, sent messages folder, drafts folder, and trash folder.",
     icon: Icons.mail_outline,
   ),
   Feature(
@@ -80,24 +85,28 @@ final _featureItems = [
     icon: Icons.call_outlined,
   ),
   Feature(
-    label: "LMS",
-    siteUrl: "https://lms.cinvu.net",
-    iconColor: const Color(0xff6276b7),
-    icon: Icons.laptop_mac_sharp,
-  ),
+      label: "LMS",
+      siteUrl: "https://lms.cinvu.net",
+      iconColor: const Color(0xff6276b7),
+      icon: Icons.laptop_mac_sharp,
+      description:
+          "An LMS or a Learning Management System is a software application that allows users to create, manage, and deliver online courses and educational content. Similar to other e-learning platforms, an LMS typically includes features such as course creation tools, assessments, and tracking systems."),
   Feature(
     label: "Market",
     siteUrl: "https://market.cinvu.net/en",
     //isEnable: false,
+    description:
+        "Market Allows You To Buy Knowledge Based Products That Produced By CINVU Members.",
     iconColor: const Color(0xff7788c1),
     icon: Icons.shop,
   ),
   Feature(
-    label: "Inquiry",
-    siteUrl: "https://inquiry.cinvu.net",
-    //isEnable: false,
+    label: "Exhibition",
+    isEnable: false,
     iconColor: const Color(0xff7788c1),
-    icon: Icons.get_app_outlined,
+    icon: Icons.museum,
+    description:
+        "Exhibition Allows You To Visit The Exhibition Of Knowledge Based Products That Produced By CINVU Members!",
   ),
   Feature(
     label: "Accredition",
@@ -105,6 +114,8 @@ final _featureItems = [
     //isEnable: false,
     iconColor: const Color(0xff8c9bca),
     icon: Icons.document_scanner_rounded,
+    description:
+        "Accreditation Allows You To Find Out About The Validity Of Certificates Issued By CINVU Members!",
   ),
   Feature(
     label: "Meta",
@@ -289,11 +300,18 @@ class _HomeScreenState extends State<HomeScreen>
                     title: const Text('Contact us'),
                   ),
                   ListTile(
+                    subtitle: const Text(
+                      "system for organizing days",
+                      style: TextStyle(
+                        fontSize: 10,
+                        color: Colors.white60,
+                      ),
+                    ),
                     onTap: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
                           builder: (context) {
-                            return CalendarScreen();
+                            return const CalendarScreen();
                           },
                         ),
                       );
